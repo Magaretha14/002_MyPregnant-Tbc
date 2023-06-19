@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
 
-    Future.delayed(const Duration(seconds: 3)).then((value) {
+    Future.delayed(const Duration(seconds: 4)).then((value) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => HomePage(),
@@ -25,8 +25,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(child: Text('Splash Screen')),
+    return Scaffold(
+      body: SafeArea(
+          child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [Image.asset('images/logomypregtbc.png')],
+        ),
+      )),
     );
   }
 }
