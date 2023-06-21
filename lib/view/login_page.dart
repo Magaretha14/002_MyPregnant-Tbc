@@ -14,14 +14,12 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.asset('images/logomypregtbc.png'),
-            Container(
-              child: const Text(
-                "Login",
-                style: TextStyle(
-                    color: Colors.purpleAccent,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold),
-              ),
+            const Text(
+              "Login",
+              style: TextStyle(
+                  color: Colors.purpleAccent,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold),
             ),
             Form(
               key: _formKey,
