@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mypregnant/Homepage.dart';
+import 'package:mypregnant/view/homepage.dart';
+import 'package:mypregnant/view/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 4)).then((value) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) => LoginPage(),
         ),
       );
     });
