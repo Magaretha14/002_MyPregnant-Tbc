@@ -1,133 +1,135 @@
 import 'package:flutter/material.dart';
+import 'package:mypregnant/view/register_page.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+
+  final FocusNode _focusNodePassword = FocusNode();
+
+  final TextEditingController _controllerUsername = TextEditingController();
+
+  final TextEditingController _controllerPassword = TextEditingController();
+
+  bool _obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       body: SafeArea(
+        child: Form(
+          key: _formKey,
           child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset('images/logomypregtbc.png'),
-            const Text(
-              "Login",
-              style: TextStyle(
-                  color: Colors.purpleAccent,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold),
-            ),
-            Form(
-              key: _formKey,
-              child: Column(children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 20),
-                  padding: const EdgeInsets.only(left: 20),
-                  alignment: Alignment.centerLeft,
-                  child: const Text(
-                    "Email",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        color: Colors.purpleAccent,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(left: 10),
-                  margin: const EdgeInsets.only(right: 20),
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                      border: UnderlineInputBorder(),
-                      hintText: 'Enter your email',
-                      hintStyle: TextStyle(fontSize: 20, color: Colors.grey),
-                      prefixIcon: Icon(
-                        Icons.person,
-                        color: Colors.purpleAccent,
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 20),
-                  padding: const EdgeInsets.only(left: 20),
-                  alignment: Alignment.centerLeft,
-                  child: const Text(
-                    "Password",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        color: Colors.purpleAccent,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(left: 10),
-                  margin: const EdgeInsets.only(right: 20),
-                  child: TextFormField(
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                      border: UnderlineInputBorder(),
-                      hintText: 'Enter your password',
-                      hintStyle: TextStyle(fontSize: 20, color: Colors.grey),
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: Colors.purpleAccent,
-                      ),
-                      suffixIcon: Icon(
-                        Icons.remove_red_eye,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(top: 30),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(80),
-                        ),
-                        minimumSize: const Size(350, 60)),
-                    child: const Text(
-                      "Sign In",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-              ]),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            padding: const EdgeInsets.all(30.0),
+            child: Column(
               children: [
-                const Text(
-                  "Don't have an account",
-                  style: TextStyle(color: Colors.deepPurpleAccent),
+                Image.asset(
+                  'images/logomypreg.png',
+                  height: 200,
+                  width: 150,
                 ),
-                TextButton(
-                  onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => RegisterPage(),
-                    //   ),
-                    // );
-                  },
-                  child: const Text(
-                    "Sign Up",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                const Text(
+                  "Welcome back",
+                  style: TextStyle(
+                      color: Colors.purple,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  "Login to your account",
+                  style: TextStyle(color: Colors.purple, fontSize: 15),
+                ),
+                const SizedBox(height: 60),
+                TextFormField(
+                  controller: _controllerUsername,
+                  keyboardType: TextInputType.name,
+                  decoration: InputDecoration(
+                    labelText: "Username",
+                    prefixIcon: const Icon(Icons.person_outline),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
+                  onEditingComplete: () => _focusNodePassword.requestFocus(),
+                ),
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: _controllerPassword,
+                  focusNode: _focusNodePassword,
+                  obscureText: _obscurePassword,
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: InputDecoration(
+                    labelText: "Password",
+                    prefixIcon: const Icon(Icons.lock),
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _obscurePassword = !_obscurePassword;
+                          });
+                        },
+                        icon: _obscurePassword
+                            ? const Icon(Icons.visibility_outlined)
+                            : const Icon(Icons.visibility_off_outlined)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 60),
+                Column(
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size.fromHeight(50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: const Text("Login"),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Don't have an account?"),
+                        TextButton(
+                          onPressed: () {
+                            _formKey.currentState?.reset();
+
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const RegisterPage();
+                                },
+                              ),
+                            );
+                          },
+                          child: const Text("Signup"),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
-            )
-          ],
+            ),
+          ),
         ),
-      )),
+      ),
     );
   }
 }
