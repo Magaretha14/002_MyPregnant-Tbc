@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mypregnant/controller/auth_controller.dart';
 import 'package:mypregnant/view/register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,6 +19,11 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _controllerPassword = TextEditingController();
 
   bool _obscurePassword = true;
+
+  final authctrl = AuthController();
+
+  String? email;
+  String? password;
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +68,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   onEditingComplete: () => _focusNodePassword.requestFocus(),
+                  onChanged: (value) {
+                    email = value;
+                  },
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
@@ -88,6 +97,11 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
+                  onChanged: (valu
+                  e) {
+                    password = value;
+
+                  },
                 ),
                 const SizedBox(height: 60),
                 Column(

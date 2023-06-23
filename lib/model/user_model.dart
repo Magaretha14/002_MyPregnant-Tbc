@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
+
 class UserModel {
   String name;
   String email;
@@ -58,4 +60,6 @@ class UserModel {
 
   @override
   int get hashCode => name.hashCode ^ email.hashCode ^ Uid.hashCode;
+
+  static UserModel? fromFirebaseUser(User user) {}
 }
