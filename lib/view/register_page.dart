@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mypregnant/controller/auth_controller.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({super.key});
@@ -23,6 +24,12 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _controllerEmail = TextEditingController();
 
   final TextEditingController _controllerPassword = TextEditingController();
+
+  final authctrl = AuthController();
+
+  String? name;
+  String? email;
+  String? password;
 
   @override
   Widget build(BuildContext context) {
