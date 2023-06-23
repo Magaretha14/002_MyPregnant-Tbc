@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mypregnant/controller/auth_controller.dart';
+import 'package:mypregnant/model/user_model.dart';
+import 'package:mypregnant/view/homepage.dart';
 import 'package:mypregnant/view/register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -97,10 +99,8 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onChanged: (valu
-                  e) {
+                  onChanged: (value) {
                     password = value;
-
                   },
                 ),
                 const SizedBox(height: 60),
@@ -113,7 +113,60 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          UserModel? registeredUser = await authctrl
+                              .signInWithEmailAndPassword(email!, password!);
+
+                          if (registeredUser != null) {
+                            // Registration successful
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text('Login Successful'),
+                                  content: const Text(
+                                      'You have been successfully login.'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        print(registeredUser.name);
+                                        Navigator.push(context,
+                                            MaterialPageRoute(
+                                                builder: (context) {
+                                          return HomePage();
+                                        }));
+                                        //Navigate to the next screen or perform any desired action
+                                      },
+                                      child: const Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          } else {
+                            // Registration failed
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text('Login Failed'),
+                                  content: const Text(
+                                      'An error occurred during login.'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        }
+                      },
                       child: const Text("Login"),
                     ),
                     Row(

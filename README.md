@@ -6,6 +6,6 @@ Aplikasi MyPregnant&Tbc adalah aplikasi pendataan khusus ibu hamil dan tubercolo
 ![Alt text](rancangan/usecase.png)
 
 ## 2. Flowchart
-![Alt text](rancangan/flowchart.png)
+![Alt text](rancangan/flowcharts.png)
 
 
