@@ -1,5 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:mypregnant/controller/auth_controller.dart';
+import 'package:mypregnant/model/user_model.dart';
+import 'package:mypregnant/view/login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({super.key});
@@ -74,6 +78,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   onEditingComplete: () => _focusNodeEmail.requestFocus(),
+                  onChanged: (value) {
+                    name = value;
+                  },
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
@@ -91,6 +98,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   onEditingComplete: () => _focusNodePassword.requestFocus(),
+                  onChanged: (value) {
+                    email = value;
+                  },
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
@@ -119,6 +129,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   onEditingComplete: () =>
                       _focusNodeConfirmPassword.requestFocus(),
+                  onChanged: (value) {
+                    password = value;
+                  },
                 ),
                 const SizedBox(height: 50),
                 Column(
@@ -130,7 +143,61 @@ class _RegisterPageState extends State<RegisterPage> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          UserModel? registeredUser =
+                              await authctrl.registerWithEmailAndPassword(
+                                  email!, password!, name!);
+
+                          if (registeredUser != null) {
+                            // Registration successful
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text('Registration Successful'),
+                                  content: const Text(
+                                      'You have been successfully registered.'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        print(registeredUser.name);
+                                        Navigator.push(context,
+                                            MaterialPageRoute(
+                                                builder: (context) {
+                                          return LoginPage();
+                                        }));
+                                        // Navigate to the next screen or perform any desired action
+                                      },
+                                      child: const Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          } else {
+                            // Registration failed
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text('Registration Failed'),
+                                  content: const Text(
+                                      'An error occurred during registration.'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        }
+                      },
                       child: const Text("Register"),
                     ),
                     Row(
