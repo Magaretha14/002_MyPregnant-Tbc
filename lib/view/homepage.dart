@@ -8,40 +8,84 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: SafeArea(
+          child: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 16.0),
+            height: 200,
+            decoration: const BoxDecoration(
+              color: Colors.white,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            child: PageView(
+              children: [
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      color: Colors.purple),
+                  child: const SizedBox(
+                    child: Text(
+                      'Page 1',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      color: Colors.purple),
+                  child: const SizedBox(
+                    child: Text(
+                      'Page 2',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+          ),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16.0),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 214, 127, 229),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: SizedBox(
+                    child: Image.asset(
+                      'images/logomypreg.png',
+                      height: 100,
+                      width: 150,
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16.0),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 214, 127, 229),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: SizedBox(
+                    child: Image.asset(
+                      'images/logomypreg.png',
+                      height: 100,
+                      width: 150,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      )),
     );
   }
 }
