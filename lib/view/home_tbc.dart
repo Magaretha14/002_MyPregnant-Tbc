@@ -1,5 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:mypregnant/components/header.dart';
+import 'package:mypregnant/view/daftardata_tbc.dart';
+import 'package:mypregnant/view/diaggejala.dart';
 
 class HomeTbc extends StatefulWidget {
   const HomeTbc({super.key});
@@ -9,10 +12,27 @@ class HomeTbc extends StatefulWidget {
 }
 
 class _HomeTbcState extends State<HomeTbc> {
+  int currentPage = 0;
+  List<Widget> pages = const [DaftarTbc(), DiagnosisGejala()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Text('Halaman utama Tbc')),
+      appBar: header(context),
+      body: pages[currentPage],
+      bottomNavigationBar: NavigationBar(
+        destinations: const [
+          NavigationDestination(
+              icon: Icon(Icons.list_alt_rounded), label: 'Daftar Data'),
+          NavigationDestination(
+              icon: Icon(Icons.add_to_queue_rounded), label: 'Diagnosis Gejala')
+        ],
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPage = index;
+          });
+        },
+        selectedIndex: currentPage,
+      ),
     );
   }
 }
