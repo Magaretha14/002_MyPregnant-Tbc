@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mypregnant/components/bottomnavbar.dart';
 import 'package:mypregnant/components/header.dart';
 import 'package:mypregnant/view/home_pregnant.dart';
 import 'package:mypregnant/view/home_tbc.dart';
@@ -29,24 +30,22 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 16.0),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      color: Colors.purple),
-                  child: const SizedBox(
-                    child: Text(
-                      'Page 1',
-                      textAlign: TextAlign.center,
+                    borderRadius: BorderRadius.circular(20.0),
+                    color: Colors.pink,
+                    image: const DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage('images/tipspreg.png'),
                     ),
                   ),
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 16.0),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      color: Colors.purple),
-                  child: const SizedBox(
-                    child: Text(
-                      'Page 2',
-                      textAlign: TextAlign.center,
+                    borderRadius: BorderRadius.circular(20.0),
+                    color: Colors.purple,
+                    image: const DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage('images/tbc.png'),
                     ),
                   ),
                 ),
@@ -67,12 +66,12 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 16.0),
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 214, 127, 229),
+                      color: Color.fromARGB(255, 230, 179, 239),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: SizedBox(
                       child: Image.asset(
-                        'images/logomypreg.png',
+                        'images/iconhamil.png',
                         height: 100,
                         width: 150,
                       ),
@@ -89,12 +88,12 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 16.0),
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 214, 127, 229),
+                      color: Color.fromARGB(255, 108, 201, 244),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: SizedBox(
                       child: Image.asset(
-                        'images/logomypreg.png',
+                        'images/icontbc.png',
                         height: 100,
                         width: 150,
                       ),

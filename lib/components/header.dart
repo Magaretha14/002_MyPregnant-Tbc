@@ -6,6 +6,6 @@ AppBar header(context) {
       'My Pregnant & Tbc',
       style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
     ),
-    backgroundColor: Theme.of(context).colorScheme.primary,
+    backgroundColor: const Color.fromARGB(255, 152, 100, 161),
   );
 }
