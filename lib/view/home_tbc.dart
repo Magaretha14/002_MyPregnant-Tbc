@@ -17,7 +17,7 @@ class _HomeTbcState extends State<HomeTbc> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: header(context),
+      appBar: header(context, titleText: 'Tubercolosis'),
       body: pages[currentPage],
       bottomNavigationBar: NavigationBar(
         destinations: const [

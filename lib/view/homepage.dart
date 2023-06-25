@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mypregnant/components/bottomnavbar.dart';
 import 'package:mypregnant/components/header.dart';
 import 'package:mypregnant/view/home_pregnant.dart';
 import 'package:mypregnant/view/home_tbc.dart';
@@ -15,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: header(context),
+      appBar: header(context, titleText: 'My Pregnant & Tbc'),
       body: SafeArea(
           child: Column(
         children: [

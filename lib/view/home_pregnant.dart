@@ -16,7 +16,7 @@ class _HomePregnantState extends State<HomePregnant> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: header(context),
+      appBar: header(context, titleText: 'Pregnant'),
       body: pages[currentPage],
       bottomNavigationBar: NavigationBar(
         destinations: const [
