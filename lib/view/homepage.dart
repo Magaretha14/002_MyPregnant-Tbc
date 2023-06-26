@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mypregnant/components/header.dart';
-import 'package:mypregnant/view/home_pregnant.dart';
-import 'package:mypregnant/view/home_tbc.dart';
+import 'package:mypregnant/view/pregnant/home_pregnant.dart';
+import 'package:mypregnant/view/tbc/home_tbc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
