@@ -4,6 +4,7 @@ import 'package:mypregnant/splash_screen.dart';
 import 'package:mypregnant/view/homepage.dart';
 import 'package:mypregnant/view/login_page.dart';
 import 'package:mypregnant/view/tbc/add_tbc.dart';
+import 'package:mypregnant/view/tbc/detaildata_tbc.dart';
 import 'package:mypregnant/view/tbc/home_tbc.dart';
 
 Future main() async {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomeTbc(),
+      home: DetailDataTbc(),
     );
   }
 }
