@@ -29,6 +29,18 @@ class TbcController {
     await docRef.update(tbcModel.toMap());
   }
 
+  Future<void> updateTbc(TbcModel tbcmodel) async {
+    final TbcModel tbcModel = TbcModel(
+        tbcid: tbcmodel.tbcid,
+        hari: tbcmodel.hari,
+        datetime: tbcmodel.datetime,
+        beratbadan: tbcmodel.beratbadan,
+        keluhan: tbcmodel.keluhan,
+        tindakan: tbcmodel.tindakan);
+
+    await tbcCollection.doc(tbcmodel.tbcid).update(tbcModel.toMap());
+  }
+
   Future<void> removeTbc(String id) async {
     await tbcCollection.doc(id).delete();
     await getTbc();
