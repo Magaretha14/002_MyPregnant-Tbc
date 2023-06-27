@@ -5,6 +5,7 @@ import 'package:mypregnant/components/header.dart';
 import 'package:mypregnant/controller/tbc_controller.dart';
 import 'package:mypregnant/view/tbc/add_tbc.dart';
 import 'package:mypregnant/view/tbc/detaildata_tbc.dart';
+import 'package:mypregnant/view/tbc/update_tbc.dart';
 
 class DaftarTbc extends StatefulWidget {
   const DaftarTbc({super.key});

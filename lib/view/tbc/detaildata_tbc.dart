@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:mypregnant/components/header_detail.dart';
 import 'package:mypregnant/controller/tbc_controller.dart';
+import 'package:mypregnant/view/tbc/update_tbc.dart';
 
 class DetailDataTbc extends StatefulWidget {
   const DetailDataTbc({
@@ -163,7 +164,23 @@ class _DetailDataTbcState extends State<DetailDataTbc> {
               ),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(onPressed: () {}, child: const Text('Edit'))
+            ElevatedButton(
+                onPressed: () {
+                  //final List<DocumentSnapshot> datatbc = snapshot.data!;
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => UpdateTbc(
+                          tbcid: widget.tbcid,
+                          hari: widget.hari,
+                          datetime: widget.datetime,
+                          bb: widget.bb,
+                          keluhan: widget.keluhan,
+                          tindakan: widget.tindakan),
+                    ),
+                  );
+                },
+                child: const Text('Edit'))
           ],
         ),
       ))),
