@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mypregnant/components/header.dart';
 import 'package:mypregnant/view/pregnant/detailibuhamil.dart';
-import 'package:mypregnant/view/pregnant/riwayatibuhamil.dart';
+import 'package:mypregnant/view/pregnant/wawasan_ibuhamil.dart';
 
 class HomePregnant extends StatefulWidget {
   const HomePregnant({super.key});
@@ -12,7 +12,7 @@ class HomePregnant extends StatefulWidget {
 
 class _HomePregnantState extends State<HomePregnant> {
   int currentPage = 0;
-  List<Widget> pages = const [DetailIbuHamil(), RiwayatIbuHamil()];
+  List<Widget> pages = const [DetailIbuHamil(), WawasanPregnant()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,9 +20,10 @@ class _HomePregnantState extends State<HomePregnant> {
       body: pages[currentPage],
       bottomNavigationBar: NavigationBar(
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home Pregnant'),
           NavigationDestination(
-              icon: Icon(Icons.list_alt_rounded), label: 'Daftar Riwayat')
+              icon: Icon(Icons.list_alt_rounded), label: 'Data Pemeriksaan'),
+          NavigationDestination(
+              icon: Icon(Icons.widgets_outlined), label: 'Outlook')
         ],
         onDestinationSelected: (int index) {
           setState(() {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:mypregnant/components/header.dart';
 import 'package:mypregnant/controller/tbc_controller.dart';
 import 'package:mypregnant/model/tbc_model.dart';
@@ -44,6 +45,7 @@ class _AddTbcState extends State<AddTbc> {
 
   @override
   Widget build(BuildContext context) {
+    //String formattedDate = DateFormat.yMMMEd().format(dateTime!);
     return Scaffold(
       appBar: header(context, titleText: "Tambah Data Tbc"),
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
@@ -260,7 +262,7 @@ class _AddTbcState extends State<AddTbc> {
 
                           tbcController.addTbc(tm);
                           ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Contact Added')));
+                              const SnackBar(content: Text('Data Tbc Added')));
 
                           Navigator.push(
                             context,

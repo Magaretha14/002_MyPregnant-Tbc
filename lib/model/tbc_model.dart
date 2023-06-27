@@ -22,7 +22,7 @@ class TbcModel {
     return {
       'tbcid': tbcid,
       'hari': hari,
-      'datetime': datetime?.toString(),
+      'datetime': datetime,
       'beratbadan': beratbadan,
       'keluhan': keluhan,
       'tindakan': tindakan,

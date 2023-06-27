@@ -138,7 +138,7 @@ class _UpdateTbcState extends State<UpdateTbc> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         labelText: 'Pilih tanggal',
-                        suffixIcon: Icon(Icons.event),
+                        suffixIcon: const Icon(Icons.event),
                       ),
                     ),
                   ),
