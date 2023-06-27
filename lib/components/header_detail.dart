@@ -12,16 +12,6 @@ AppBar headerdetail(context,
           style:
               const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        Container(
-          alignment: Alignment.centerRight,
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => AddTbc()));
-            },
-            child: const Icon(Icons.edit),
-          ),
-        )
       ],
     ),
     backgroundColor: const Color.fromARGB(255, 152, 100, 161),

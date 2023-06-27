@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mypregnant/components/header.dart';
 import 'package:mypregnant/controller/tbc_controller.dart';
 import 'package:mypregnant/view/tbc/add_tbc.dart';
+import 'package:mypregnant/view/tbc/detaildata_tbc.dart';
 
 class DaftarTbc extends StatefulWidget {
   const DaftarTbc({super.key});
@@ -50,7 +51,20 @@ class _DaftarTbcState extends State<DaftarTbc> {
                       return Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: InkWell(
-                          onLongPress: () {},
+                          onLongPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailDataTbc(
+                                    tbcid: datatbc[index]['tbcid'],
+                                    hari: datatbc[index]['hari'],
+                                    datetime: datatbc[index]['datetime'],
+                                    bb: datatbc[index]['beratbadan'],
+                                    keluhan: datatbc[index]['keluhan'],
+                                    tindakan: datatbc[index]['tindakan']),
+                              ),
+                            );
+                          },
                           child: Card(
                             elevation: 10,
                             child: ListTile(
