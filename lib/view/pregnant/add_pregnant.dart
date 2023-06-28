@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mypregnant/components/header.dart';
 import 'package:mypregnant/controller/pregnant_controller.dart';
+import 'package:mypregnant/model/pregnant_model.dart';
+import 'package:mypregnant/view/pregnant/daftar_pregnant.dart';
+import 'package:mypregnant/view/pregnant/detailibuhamil.dart';
+import 'package:mypregnant/view/pregnant/home_pregnant.dart';
 
 class AddPregnant extends StatefulWidget {
   const AddPregnant({super.key});
@@ -14,9 +18,14 @@ class _AddPregnantState extends State<AddPregnant> {
 
   var pregController = PregnantController();
 
+  String? usiajanin;
   DateTime? tanggal;
+  String? bbpreg;
+  String? selectedvalue;
+  String? keluhan;
+  String? tindakan;
 
-  final TextEditingController _controllerHari = TextEditingController();
+  final TextEditingController _controllerUsiaJanin = TextEditingController();
   final TextEditingController _controllerBb = TextEditingController();
   final TextEditingController _controllerKeluhan = TextEditingController();
   final TextEditingController _controllerTindakan = TextEditingController();
@@ -36,6 +45,19 @@ class _AddPregnantState extends State<AddPregnant> {
     });
   }
 
+  List<String> ket = ['Ya', 'Tidak'];
+
+  List<DropdownMenuItem> generateItems(List<String> ket) {
+    List<DropdownMenuItem> items = [];
+    for (var item in ket) {
+      items.add(DropdownMenuItem(
+        child: Text(item),
+        value: item,
+      ));
+    }
+    return items;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,19 +70,10 @@ class _AddPregnantState extends State<AddPregnant> {
             padding: const EdgeInsets.all(30.0),
             child: Column(
               children: [
-                const Text(
-                  "Tambahkan Data Perkembangan Kehamilan Anda",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.purple,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 20),
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
-                    'Minggu ke :',
+                    'Umur Kehamilan :',
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -69,10 +82,10 @@ class _AddPregnantState extends State<AddPregnant> {
                   ),
                 ),
                 TextFormField(
-                  controller: _controllerHari,
+                  controller: _controllerUsiaJanin,
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
-                    hintText: "Masukkan minggu ke",
+                    hintText: "Masukkan umur kehamilan (minggu)",
                     prefixIcon: const Icon(Icons.calendar_view_day_rounded),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -82,7 +95,7 @@ class _AddPregnantState extends State<AddPregnant> {
                     ),
                   ),
                   onChanged: (value) {
-                    //hari = value;
+                    usiajanin = value;
                   },
                 ),
                 Container(
@@ -152,7 +165,7 @@ class _AddPregnantState extends State<AddPregnant> {
                     ),
                   ),
                   onChanged: (value) {
-                    //beratbadan = value;
+                    bbpreg = value;
                   },
                 ),
                 Container(
@@ -163,6 +176,38 @@ class _AddPregnantState extends State<AddPregnant> {
                         color: Colors.red,
                         fontSize: 15,
                         fontStyle: FontStyle.italic),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: const Text(
+                    'Kaki bengkak :',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.only(left: 10),
+                  margin: const EdgeInsets.only(right: 250),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: DropdownButton(
+                    borderRadius: BorderRadius.circular(10),
+                    icon: const Icon(Icons.arrow_drop_down_circle_rounded),
+                    dropdownColor: const Color.fromARGB(255, 223, 121, 238),
+                    value: selectedvalue,
+                    items: generateItems(ket),
+                    onChanged: (item) {
+                      setState(() {
+                        selectedvalue = item;
+                      });
+                    },
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -191,7 +236,7 @@ class _AddPregnantState extends State<AddPregnant> {
                     ),
                   ),
                   onChanged: (value) {
-                    //keluhan = value;
+                    keluhan = value;
                   },
                 ),
                 const SizedBox(height: 10),
@@ -220,7 +265,7 @@ class _AddPregnantState extends State<AddPregnant> {
                     ),
                   ),
                   onChanged: (value) {
-                    //tindakan = value;
+                    tindakan = value;
                   },
                 ),
                 Container(
@@ -244,25 +289,27 @@ class _AddPregnantState extends State<AddPregnant> {
                         ),
                       ),
                       onPressed: () {
-                        // if (_formKey.currentState!.validate()) {
-                        //   TbcModel tm = TbcModel(
-                        //       hari: hari!,
-                        //       datetime: dateTime!,
-                        //       beratbadan: beratbadan!,
-                        //       keluhan: keluhan!,
-                        //       tindakan: tindakan!);
+                        if (_formKey.currentState!.validate()) {
+                          PregnantModel pm = PregnantModel(
+                              usiajanin: usiajanin!,
+                              tanggal: tanggal!,
+                              bbpreg: bbpreg!,
+                              selectedvalue: selectedvalue!,
+                              keluhan: keluhan!,
+                              tindakan: tindakan!);
 
-                        //   tbcController.addTbc(tm);
-                        //   ScaffoldMessenger.of(context).showSnackBar(
-                        //       const SnackBar(content: Text('Data Tbc Added')));
+                          pregController.addPregnant(pm);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text('Data Ibu Hamil Added')));
 
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => const DaftarTbc(),
-                        //     ),
-                        //   );
-                        // }
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomePregnant(),
+                            ),
+                          );
+                        }
                       },
                       child: const Text("Simpan"),
                     ),

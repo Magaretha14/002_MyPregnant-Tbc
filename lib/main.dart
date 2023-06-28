@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mypregnant/splash_screen.dart';
 import 'package:mypregnant/view/homepage.dart';
 import 'package:mypregnant/view/login_page.dart';
+import 'package:mypregnant/view/pregnant/add_pregnant.dart';
 import 'package:mypregnant/view/tbc/add_tbc.dart';
 import 'package:mypregnant/view/tbc/daftardata_tbc.dart';
 import 'package:mypregnant/view/tbc/detaildata_tbc.dart';

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mypregnant/components/header.dart';
+import 'package:mypregnant/view/pregnant/daftar_pregnant.dart';
 import 'package:mypregnant/view/pregnant/detailibuhamil.dart';
 import 'package:mypregnant/view/pregnant/wawasan_ibuhamil.dart';
+import 'package:mypregnant/view/tbc/daftardata_tbc.dart';
 
 class HomePregnant extends StatefulWidget {
   const HomePregnant({super.key});
@@ -12,7 +14,7 @@ class HomePregnant extends StatefulWidget {
 
 class _HomePregnantState extends State<HomePregnant> {
   int currentPage = 0;
-  List<Widget> pages = const [DetailIbuHamil(), WawasanPregnant()];
+  List<Widget> pages = const [DaftarPregnant(), WawasanPregnant()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
