@@ -3,7 +3,7 @@ import 'dart:convert';
 class PregnantModel {
   String? pregid;
   final String usiajanin;
-  final DateTime? tanggal;
+  final String formatDate;
   final String bbpreg;
   final String selectedvalue;
   final String keluhan;
@@ -11,7 +11,7 @@ class PregnantModel {
   PregnantModel({
     this.pregid,
     required this.usiajanin,
-    this.tanggal,
+    required this.formatDate,
     required this.bbpreg,
     required this.selectedvalue,
     required this.keluhan,
@@ -22,7 +22,7 @@ class PregnantModel {
     return {
       'pregid': pregid,
       'usiajanin': usiajanin,
-      'tanggal': tanggal,
+      'formatDate': formatDate,
       'bbpreg': bbpreg,
       'selectedvalue': selectedvalue,
       'keluhan': keluhan,
@@ -34,7 +34,7 @@ class PregnantModel {
     return PregnantModel(
       pregid: map['pregid'],
       usiajanin: map['usiajanin'] ?? '',
-      tanggal: map['tanggal'] != null ? DateTime.now() : null,
+      formatDate: map['formatDate'],
       bbpreg: map['bbpreg'] ?? '',
       selectedvalue: map['selectedvalue'] ?? '',
       keluhan: map['keluhan'] ?? '',

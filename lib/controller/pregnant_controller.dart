@@ -21,7 +21,7 @@ class PregnantController {
     final PregnantModel pregModel = PregnantModel(
         pregid: docId,
         usiajanin: pregmodel.usiajanin,
-        tanggal: pregmodel.tanggal,
+        formatDate: pregmodel.formatDate,
         bbpreg: pregmodel.bbpreg,
         selectedvalue: pregmodel.selectedvalue,
         keluhan: pregmodel.keluhan,
@@ -42,17 +42,18 @@ class PregnantController {
   //   await tbcCollection.doc(tbcmodel.tbcid).update(tbcModel.toMap());
   // }
 
-  // Future<void> detailTbc(TbcModel tbcmodel) async {
-  //   final TbcModel tbcModel = TbcModel(
-  //       tbcid: tbcmodel.tbcid,
-  //       hari: tbcmodel.hari,
-  //       datetime: tbcmodel.datetime,
-  //       beratbadan: tbcmodel.beratbadan,
-  //       keluhan: tbcmodel.keluhan,
-  //       tindakan: tbcmodel.tindakan);
+  Future<void> detailPreg(PregnantModel pregmodel) async {
+    final PregnantModel pregModel = PregnantModel(
+        pregid: pregmodel.pregid,
+        usiajanin: pregmodel.usiajanin,
+        formatDate: pregmodel.formatDate,
+        bbpreg: pregmodel.bbpreg,
+        selectedvalue: pregmodel.selectedvalue,
+        keluhan: pregmodel.keluhan,
+        tindakan: pregmodel.tindakan);
 
-  //   await tbcCollection.doc(tbcmodel.tbcid).update(tbcModel.toMap());
-  // }
+    await pregCollection.doc(pregmodel.pregid).update(pregModel.toMap());
+  }
 
   Future<void> removePreg(String id) async {
     await pregCollection.doc(id).delete();

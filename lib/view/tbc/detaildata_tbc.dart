@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:mypregnant/components/header_detail.dart';
-import 'package:mypregnant/controller/tbc_controller.dart';
 import 'package:mypregnant/view/tbc/update_tbc.dart';
 
 class DetailDataTbc extends StatefulWidget {

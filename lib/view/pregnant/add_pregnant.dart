@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:mypregnant/components/header.dart';
 import 'package:mypregnant/controller/pregnant_controller.dart';
 import 'package:mypregnant/model/pregnant_model.dart';
-import 'package:mypregnant/view/pregnant/daftar_pregnant.dart';
-import 'package:mypregnant/view/pregnant/detailibuhamil.dart';
 import 'package:mypregnant/view/pregnant/home_pregnant.dart';
 
 class AddPregnant extends StatefulWidget {
@@ -19,31 +18,35 @@ class _AddPregnantState extends State<AddPregnant> {
   var pregController = PregnantController();
 
   String? usiajanin;
-  DateTime? tanggal;
+  String? formatDate;
   String? bbpreg;
   String? selectedvalue;
   String? keluhan;
   String? tindakan;
+
+  final TextEditingController datetimeinput = TextEditingController();
 
   final TextEditingController _controllerUsiaJanin = TextEditingController();
   final TextEditingController _controllerBb = TextEditingController();
   final TextEditingController _controllerKeluhan = TextEditingController();
   final TextEditingController _controllerTindakan = TextEditingController();
 
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(
-        Duration(days: 28),
-      ),
-    );
+  // Future<void> _selectDate(BuildContext context) async {
+  //   final DateTime? picked = await showDatePicker(
+  //     context: context,
+  //     initialDate: DateTime.now(),
+  //     firstDate: DateTime(2000),
+  //     lastDate: DateTime(2100).add(
+  //       Duration(days: 28),
+  //     ),
+  //   );
 
-    setState(() {
-      tanggal = picked;
-    });
-  }
+  //   String formatdate = DateFormat('dd-MM-yyyy').format(picked!);
+
+  //   setState(() {
+  //     tanggal = formatdate as DateTime?;
+  //   });
+  // }
 
   List<String> ket = ['Ya', 'Tidak'];
 
@@ -120,25 +123,52 @@ class _AddPregnantState extends State<AddPregnant> {
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () => _selectDate(context),
-                  child: AbsorbPointer(
-                    child: TextField(
-                      controller: TextEditingController(
-                          text: tanggal?.toString() ?? ''),
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        labelText: 'Pilih tanggal',
-                        suffixIcon: Icon(Icons.event),
-                      ),
+                TextFormField(
+                  controller: datetimeinput,
+                  decoration: InputDecoration(
+                    hintText: "Pilih Tanggal",
+                    suffixIcon: const Icon(Icons.event),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
+                  readOnly: true,
+                  onTap: () async {
+                    DateTime? tanggal = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                    );
+                    formatDate = DateFormat('dd-MM-yyyy').format(tanggal!);
+
+                    setState(() {
+                      datetimeinput.text = formatDate!;
+                    });
+                  },
                 ),
+                // GestureDetector(
+                //   onTap: () => _selectDate(context),
+                //   child: AbsorbPointer(
+                //     child: TextField(
+                //       controller: TextEditingController(
+                //           text: tanggal?.toString() ?? ''),
+                //       decoration: InputDecoration(
+                //         border: OutlineInputBorder(
+                //           borderRadius: BorderRadius.circular(10),
+                //         ),
+                //         enabledBorder: OutlineInputBorder(
+                //           borderRadius: BorderRadius.circular(10),
+                //         ),
+                //         labelText: 'Pilih tanggal',
+                //         suffixIcon: Icon(Icons.event),
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 const SizedBox(height: 10),
                 Container(
                   alignment: Alignment.centerLeft,
@@ -292,7 +322,7 @@ class _AddPregnantState extends State<AddPregnant> {
                         if (_formKey.currentState!.validate()) {
                           PregnantModel pm = PregnantModel(
                               usiajanin: usiajanin!,
-                              tanggal: tanggal!,
+                              formatDate: formatDate!,
                               bbpreg: bbpreg!,
                               selectedvalue: selectedvalue!,
                               keluhan: keluhan!,

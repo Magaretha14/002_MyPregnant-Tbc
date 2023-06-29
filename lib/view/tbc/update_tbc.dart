@@ -33,11 +33,6 @@ class _UpdateTbcState extends State<UpdateTbc> {
 
   var tbcController = TbcController();
 
-  // final TextEditingController _controllerHari = TextEditingController();
-  // final TextEditingController _controllerBb = TextEditingController();
-  // final TextEditingController _controllerKeluhan = TextEditingController();
-  // final TextEditingController _controllerTindakan = TextEditingController();
-
   String? newhari;
   DateTime? newdateTime;
   String? newberatbadan;

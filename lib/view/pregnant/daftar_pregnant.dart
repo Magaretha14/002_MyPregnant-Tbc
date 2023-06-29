@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mypregnant/controller/pregnant_controller.dart';
 import 'package:mypregnant/view/pregnant/add_pregnant.dart';
+import 'package:mypregnant/view/pregnant/detailibuhamil.dart';
 
 class DaftarPregnant extends StatefulWidget {
   const DaftarPregnant({super.key});
@@ -44,27 +45,31 @@ class _DaftarPregnantState extends State<DaftarPregnant> {
                       return Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: InkWell(
-                          onLongPress: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => DetailDataTbc(
-                            //         tbcid: datatbc[index]['tbcid'],
-                            //         hari: datatbc[index]['hari'],
-                            //         datetime: datatbc[index]['datetime'],
-                            //         bb: datatbc[index]['beratbadan'],
-                            //         keluhan: datatbc[index]['keluhan'],
-                            //         tindakan: datatbc[index]['tindakan']),
-                            //   ),
-                            // );
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailIbuHamil(
+                                  pregid: datapreg[index]['pregid'],
+                                  usiajanin: datapreg[index]['usiajanin'],
+                                  formatDate:
+                                      datapreg[index]['formatDate'].toString(),
+                                  bbpreg: datapreg[index]['bbpreg'],
+                                  selectedvalue: datapreg[index]
+                                      ['selectedvalue'],
+                                  keluhan: datapreg[index]['keluhan'],
+                                  tindakan: datapreg[index]['tindakan'],
+                                ),
+                              ),
+                            );
                           },
                           child: Card(
                             elevation: 10,
                             child: ListTile(
                               title: Text(datapreg[index]['usiajanin']),
                               leading: const Text('Minggu ke '),
-                              subtitle:
-                                  Text(datapreg[index]['tanggal'].toString()),
+                              subtitle: Text(
+                                  datapreg[index]['formatDate'].toString()),
                               trailing: IconButton(
                                 icon: const Icon(Icons.delete),
                                 onPressed: () {
