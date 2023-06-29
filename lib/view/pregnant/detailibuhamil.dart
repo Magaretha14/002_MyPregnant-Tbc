@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import 'package:mypregnant/components/header_detail.dart';
 import 'package:mypregnant/controller/pregnant_controller.dart';
+import 'package:mypregnant/view/pregnant/update_pregnant.dart';
 
 class DetailIbuHamil extends StatefulWidget {
   const DetailIbuHamil({
@@ -33,12 +33,6 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
 
   var pregController = PregnantController();
 
-  // String? usiajanin;
-  // DateTime? tanggal;
-  // String? bbpreg;
-  // String? selectedvalue;
-  // String? keluhan;
-  // String? tindakan;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -160,9 +154,6 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  // onChanged: (value) {
-                  //   bbpreg = value;
-                  // },
                   initialValue: widget.selectedvalue,
                   readOnly: true,
                 ),
@@ -235,6 +226,19 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                         ),
                       ),
                       onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => UpdatePregnant(
+                                pregid: widget.pregid,
+                                usiajanin: widget.usiajanin,
+                                formatDate: widget.formatDate,
+                                bbpreg: widget.bbpreg,
+                                selectedvalue: widget.selectedvalue,
+                                keluhan: widget.keluhan,
+                                tindakan: widget.tindakan),
+                          ),
+                        );
                         // if (_formKey.currentState!.validate()) {
                         //   PregnantModel pm = PregnantModel(
                         //       usiajanin: usiajanin!,

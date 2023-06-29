@@ -30,17 +30,18 @@ class PregnantController {
     await docRef.update(pregModel.toMap());
   }
 
-  // Future<void> updateTbc(TbcModel tbcmodel) async {
-  //   final TbcModel tbcModel = TbcModel(
-  //       tbcid: tbcmodel.tbcid,
-  //       hari: tbcmodel.hari,
-  //       datetime: tbcmodel.datetime,
-  //       beratbadan: tbcmodel.beratbadan,
-  //       keluhan: tbcmodel.keluhan,
-  //       tindakan: tbcmodel.tindakan);
+  Future<void> updatePreg(PregnantModel pregmodel) async {
+    final PregnantModel pregModel = PregnantModel(
+        pregid: pregmodel.pregid,
+        usiajanin: pregmodel.usiajanin,
+        formatDate: pregmodel.formatDate,
+        bbpreg: pregmodel.bbpreg,
+        selectedvalue: pregmodel.selectedvalue,
+        keluhan: pregmodel.keluhan,
+        tindakan: pregmodel.tindakan);
 
-  //   await tbcCollection.doc(tbcmodel.tbcid).update(tbcModel.toMap());
-  // }
+    await pregCollection.doc(pregmodel.pregid).update(pregModel.toMap());
+  }
 
   Future<void> detailPreg(PregnantModel pregmodel) async {
     final PregnantModel pregModel = PregnantModel(
