@@ -31,23 +31,6 @@ class _AddPregnantState extends State<AddPregnant> {
   final TextEditingController _controllerKeluhan = TextEditingController();
   final TextEditingController _controllerTindakan = TextEditingController();
 
-  // Future<void> _selectDate(BuildContext context) async {
-  //   final DateTime? picked = await showDatePicker(
-  //     context: context,
-  //     initialDate: DateTime.now(),
-  //     firstDate: DateTime(2000),
-  //     lastDate: DateTime(2100).add(
-  //       Duration(days: 28),
-  //     ),
-  //   );
-
-  //   String formatdate = DateFormat('dd-MM-yyyy').format(picked!);
-
-  //   setState(() {
-  //     tanggal = formatdate as DateTime?;
-  //   });
-  // }
-
   List<String> ket = ['Ya', 'Tidak'];
 
   List<DropdownMenuItem> generateItems(List<String> ket) {
@@ -143,32 +126,16 @@ class _AddPregnantState extends State<AddPregnant> {
                       firstDate: DateTime(2000),
                       lastDate: DateTime(2100),
                     );
-                    formatDate = DateFormat('dd-MM-yyyy').format(tanggal!);
 
-                    setState(() {
-                      datetimeinput.text = formatDate!;
-                    });
+                    if (tanggal != null) {
+                      formatDate = DateFormat('dd-MM-yyyy').format(tanggal);
+
+                      setState(() {
+                        datetimeinput.text = formatDate.toString();
+                      });
+                    }
                   },
                 ),
-                // GestureDetector(
-                //   onTap: () => _selectDate(context),
-                //   child: AbsorbPointer(
-                //     child: TextField(
-                //       controller: TextEditingController(
-                //           text: tanggal?.toString() ?? ''),
-                //       decoration: InputDecoration(
-                //         border: OutlineInputBorder(
-                //           borderRadius: BorderRadius.circular(10),
-                //         ),
-                //         enabledBorder: OutlineInputBorder(
-                //           borderRadius: BorderRadius.circular(10),
-                //         ),
-                //         labelText: 'Pilih tanggal',
-                //         suffixIcon: Icon(Icons.event),
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 const SizedBox(height: 10),
                 Container(
                   alignment: Alignment.centerLeft,
@@ -269,6 +236,16 @@ class _AddPregnantState extends State<AddPregnant> {
                     keluhan = value;
                   },
                 ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: const Text(
+                    '*jika tidak ada keluhan isi dengan tanda " - " saja',
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 15,
+                        fontStyle: FontStyle.italic),
+                  ),
+                ),
                 const SizedBox(height: 10),
                 Container(
                   alignment: Alignment.centerLeft,
@@ -322,7 +299,7 @@ class _AddPregnantState extends State<AddPregnant> {
                         if (_formKey.currentState!.validate()) {
                           PregnantModel pm = PregnantModel(
                               usiajanin: usiajanin!,
-                              formatDate: formatDate!,
+                              formatDate: datetimeinput.text,
                               bbpreg: bbpreg!,
                               selectedvalue: selectedvalue!,
                               keluhan: keluhan!,
@@ -331,7 +308,7 @@ class _AddPregnantState extends State<AddPregnant> {
                           pregController.addPregnant(pm);
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                  content: Text('Data Ibu Hamil Added')));
+                                  content: Text('Data Ibu Hamil ditambahkan')));
 
                           Navigator.push(
                             context,

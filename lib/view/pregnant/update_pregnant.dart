@@ -34,10 +34,10 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
 
   var pregController = PregnantController();
 
-  final TextEditingController datetimeinput = TextEditingController();
+  final TextEditingController _newdatetimeinput = TextEditingController();
 
   String? newusiajanin;
-  String? newformatDate;
+  String? _newformatDate;
   String? newbbpreg;
   String? newselectedvalue;
   String? newkeluhan;
@@ -60,7 +60,8 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
   void initState() {
     super.initState();
     newselectedvalue = widget.selectedvalue;
-    newformatDate = widget.formatDate;
+    //_formKey = GlobalKey<FormState>();
+    _newdatetimeinput.text = widget.formatDate ?? '';
   }
 
   @override
@@ -115,9 +116,9 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                   ),
                 ),
                 TextFormField(
-                  controller: datetimeinput,
+                  controller: _newdatetimeinput,
                   decoration: InputDecoration(
-                    hintText: "Pilih Tanggal",
+                    //hintText: "Pilih Tanggal",
                     suffixIcon: const Icon(Icons.event),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -128,19 +129,23 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                   ),
                   readOnly: true,
                   onTap: () async {
+                    //print(_newformatDate);
                     DateTime? tanggal = await showDatePicker(
                       context: context,
                       initialDate: DateTime.now(),
                       firstDate: DateTime(2000),
                       lastDate: DateTime(2100),
                     );
-                    newformatDate = DateFormat('dd-MM-yyyy').format(tanggal!);
 
-                    setState(() {
-                      datetimeinput.text = newformatDate!;
-                    });
+                    if (tanggal != null) {
+                      _newformatDate =
+                          DateFormat('dd-MM-yyyy').format(tanggal).toString();
+                      setState(() {
+                        _newdatetimeinput.text = _newformatDate!;
+                      });
+                    }
+                    print(_newformatDate);
                   },
-                  //initialValue: widget.formatDate,
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -274,7 +279,7 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                           PregnantModel pm = PregnantModel(
                               pregid: widget.pregid,
                               usiajanin: newusiajanin!,
-                              formatDate: newformatDate!,
+                              formatDate: _newdatetimeinput.text,
                               bbpreg: newbbpreg!,
                               selectedvalue: newselectedvalue!,
                               keluhan: newkeluhan!,
@@ -283,7 +288,8 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                           pregController.updatePreg(pm);
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                  content: Text('Data Ibu Hamil Added')));
+                                  content:
+                                      Text('Data Ibu Hamil berhasil diedit')));
 
                           Navigator.push(
                             context,

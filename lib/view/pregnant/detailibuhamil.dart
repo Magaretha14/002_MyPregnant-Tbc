@@ -239,27 +239,6 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                                 tindakan: widget.tindakan),
                           ),
                         );
-                        // if (_formKey.currentState!.validate()) {
-                        //   PregnantModel pm = PregnantModel(
-                        //       usiajanin: usiajanin!,
-                        //       tanggal: tanggal!,
-                        //       bbpreg: bbpreg!,
-                        //       selectedvalue: selectedvalue!,
-                        //       keluhan: keluhan!,
-                        //       tindakan: tindakan!);
-
-                        //   pregController.addPregnant(pm);
-                        //   ScaffoldMessenger.of(context).showSnackBar(
-                        //       const SnackBar(
-                        //           content: Text('Data Ibu Hamil Added')));
-
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => const HomePregnant(),
-                        //     ),
-                        //   );
-                        // }
                       },
                       child: const Text("Edit"),
                     ),
