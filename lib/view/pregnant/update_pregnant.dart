@@ -291,7 +291,7 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                                   content:
                                       Text('Data Ibu Hamil berhasil diedit')));
 
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) => const HomePregnant(),

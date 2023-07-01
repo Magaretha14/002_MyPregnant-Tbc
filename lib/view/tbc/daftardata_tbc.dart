@@ -1,11 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mypregnant/components/header.dart';
 import 'package:mypregnant/controller/tbc_controller.dart';
 import 'package:mypregnant/view/tbc/add_tbc.dart';
 import 'package:mypregnant/view/tbc/detaildata_tbc.dart';
-import 'package:mypregnant/view/tbc/update_tbc.dart';
 
 class DaftarTbc extends StatefulWidget {
   const DaftarTbc({super.key});
@@ -30,10 +27,6 @@ class _DaftarTbcState extends State<DaftarTbc> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // const Text(
-            //   'Contact List',
-            //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            // ),
             Expanded(
               child: StreamBuilder<List<DocumentSnapshot>>(
                 stream: tbcctrl.stream,
@@ -59,7 +52,7 @@ class _DaftarTbcState extends State<DaftarTbc> {
                                 builder: (context) => DetailDataTbc(
                                     tbcid: datatbc[index]['tbcid'],
                                     hari: datatbc[index]['hari'],
-                                    datetime: datatbc[index]['datetime'],
+                                    formattgl: datatbc[index]['formattgl'],
                                     bb: datatbc[index]['beratbadan'],
                                     keluhan: datatbc[index]['keluhan'],
                                     tindakan: datatbc[index]['tindakan']),
@@ -72,7 +65,7 @@ class _DaftarTbcState extends State<DaftarTbc> {
                               title: Text(datatbc[index]['hari']),
                               leading: const Text('Hari ke'),
                               subtitle:
-                                  Text(datatbc[index]['datetime'].toString()),
+                                  Text(datatbc[index]['formattgl'].toString()),
                               trailing: IconButton(
                                 icon: const Icon(Icons.delete),
                                 onPressed: () {
@@ -84,7 +77,7 @@ class _DaftarTbcState extends State<DaftarTbc> {
 
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
-                                          content: Text('Contact Deleted')));
+                                          content: Text('Data dihapus')));
                                 },
                               ),
                             ),

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:mypregnant/components/header_detail.dart';
+import 'package:intl/intl.dart';
 
+import 'package:mypregnant/components/header_detail.dart';
 import 'package:mypregnant/controller/tbc_controller.dart';
 import 'package:mypregnant/model/tbc_model.dart';
-import 'package:mypregnant/view/tbc/daftardata_tbc.dart';
-import 'package:mypregnant/view/tbc/detaildata_tbc.dart';
+import 'package:mypregnant/view/tbc/home_tbc.dart';
 
 class UpdateTbc extends StatefulWidget {
   const UpdateTbc({
     Key? key,
     this.tbcid,
     this.hari,
-    this.datetime,
+    this.formattgl,
     this.bb,
     this.keluhan,
     this.tindakan,
@@ -22,7 +22,7 @@ class UpdateTbc extends StatefulWidget {
 
   final String? tbcid;
   final String? hari;
-  final String? datetime;
+  final String? formattgl;
   final String? bb;
   final String? keluhan;
   final String? tindakan;
@@ -34,24 +34,18 @@ class _UpdateTbcState extends State<UpdateTbc> {
   var tbcController = TbcController();
 
   String? newhari;
-  DateTime? newdateTime;
+  String? newformattgl;
   String? newberatbadan;
   String? newkeluhan;
   String? newtindakan;
 
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(
-        Duration(days: 28),
-      ),
-    );
+  final TextEditingController newinputtgl = TextEditingController();
 
-    setState(() {
-      newdateTime = picked;
-    });
+  @override
+  void initState() {
+    // TODO: implement initState
+    newinputtgl.text = widget.formattgl ?? '';
+    super.initState();
   }
 
   @override
@@ -79,7 +73,6 @@ class _UpdateTbcState extends State<UpdateTbc> {
                   ),
                 ),
                 TextFormField(
-                  //controller: _controllerHari,
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     hintText: "Masukkan hari ke",
@@ -118,25 +111,35 @@ class _UpdateTbcState extends State<UpdateTbc> {
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () => _selectDate(context),
-                  child: AbsorbPointer(
-                    child: TextField(
-                      controller: TextEditingController(
-                        text: newdateTime?.toString() ?? '',
-                      ),
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        labelText: 'Pilih tanggal',
-                        suffixIcon: const Icon(Icons.event),
-                      ),
+                TextFormField(
+                  controller: newinputtgl,
+                  decoration: InputDecoration(
+                    suffixIcon: const Icon(Icons.event),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
+                  readOnly: true,
+                  onTap: () async {
+                    DateTime? picktanggal = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                    );
+
+                    if (picktanggal != null) {
+                      newformattgl = DateFormat('dd-MM-yyyy')
+                          .format(picktanggal)
+                          .toString();
+                      setState(() {
+                        newinputtgl.text = newformattgl!;
+                      });
+                    }
+                  },
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -151,7 +154,6 @@ class _UpdateTbcState extends State<UpdateTbc> {
                   ),
                 ),
                 TextFormField(
-                  //controller: _controllerBb,
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     hintText: "Masukkan berat badan anda",
@@ -191,7 +193,6 @@ class _UpdateTbcState extends State<UpdateTbc> {
                   ),
                 ),
                 TextFormField(
-                  //controller: _controllerKeluhan,
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     hintText: "Masukkan keluhan anda",
@@ -221,7 +222,6 @@ class _UpdateTbcState extends State<UpdateTbc> {
                   ),
                 ),
                 TextFormField(
-                  //controller: _controllerTindakan,
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     hintText: "Masukkan tindakan",
@@ -264,19 +264,20 @@ class _UpdateTbcState extends State<UpdateTbc> {
                           TbcModel tm = TbcModel(
                               tbcid: widget.tbcid,
                               hari: newhari!.toString(),
-                              datetime: newdateTime!,
+                              formattgl: newinputtgl.text,
                               beratbadan: newberatbadan!.toString(),
                               keluhan: newkeluhan!.toString(),
                               tindakan: newtindakan!.toString());
 
                           tbcController.updateTbc(tm);
                           ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Contact Edited')));
+                              const SnackBar(
+                                  content: Text('Data Anda telah diedit')));
 
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const DetailDataTbc(),
+                              builder: (context) => const HomeTbc(),
                             ),
                           );
                         }

@@ -1,18 +1,16 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 class TbcModel {
   String? tbcid;
   final String hari;
-  final DateTime? datetime;
+  final String formattgl;
   final String beratbadan;
   final String keluhan;
   final String tindakan;
   TbcModel({
     this.tbcid,
     required this.hari,
-    this.datetime,
+    required this.formattgl,
     required this.beratbadan,
     required this.keluhan,
     required this.tindakan,
@@ -22,7 +20,7 @@ class TbcModel {
     return {
       'tbcid': tbcid,
       'hari': hari,
-      'datetime': datetime,
+      'formattgl': formattgl,
       'beratbadan': beratbadan,
       'keluhan': keluhan,
       'tindakan': tindakan,
@@ -33,9 +31,7 @@ class TbcModel {
     return TbcModel(
       tbcid: map['tbcid'],
       hari: map['hari'] ?? '',
-      datetime: map['datetime'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['datetime'])
-          : null,
+      formattgl: map['formattgl'] ?? '',
       beratbadan: map['beratbadan'] ?? '',
       keluhan: map['keluhan'] ?? '',
       tindakan: map['tindakan'] ?? '',

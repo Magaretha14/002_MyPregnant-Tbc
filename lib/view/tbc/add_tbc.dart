@@ -22,26 +22,13 @@ class _AddTbcState extends State<AddTbc> {
   final TextEditingController _controllerKeluhan = TextEditingController();
   final TextEditingController _controllerTindakan = TextEditingController();
 
+  final TextEditingController inputtgl = TextEditingController();
+
   String? hari;
-  DateTime? dateTime;
+  String? formattgl;
   String? beratbadan;
   String? keluhan;
   String? tindakan;
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(
-        Duration(days: 28),
-      ),
-    );
-
-    setState(() {
-      dateTime = picked;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,24 +102,35 @@ class _AddTbcState extends State<AddTbc> {
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () => _selectDate(context),
-                  child: AbsorbPointer(
-                    child: TextField(
-                      controller: TextEditingController(
-                          text: dateTime?.toString() ?? ''),
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        labelText: 'Pilih tanggal',
-                        suffixIcon: Icon(Icons.event),
-                      ),
+                TextFormField(
+                  controller: inputtgl,
+                  decoration: InputDecoration(
+                    hintText: "Pilih Tanggal",
+                    suffixIcon: const Icon(Icons.event),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
+                  readOnly: true,
+                  onTap: () async {
+                    DateTime? picktanggal = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                    );
+
+                    if (picktanggal != null) {
+                      formattgl = DateFormat('dd-MM-yyyy').format(picktanggal);
+
+                      setState(() {
+                        inputtgl.text = formattgl.toString();
+                      });
+                    }
+                  },
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -255,7 +253,7 @@ class _AddTbcState extends State<AddTbc> {
                         if (_formKey.currentState!.validate()) {
                           TbcModel tm = TbcModel(
                               hari: hari!,
-                              datetime: dateTime!,
+                              formattgl: inputtgl.text,
                               beratbadan: beratbadan!,
                               keluhan: keluhan!,
                               tindakan: tindakan!);
@@ -264,7 +262,7 @@ class _AddTbcState extends State<AddTbc> {
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Data Tbc Added')));
 
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) => const DaftarTbc(),

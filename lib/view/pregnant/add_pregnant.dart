@@ -310,7 +310,7 @@ class _AddPregnantState extends State<AddPregnant> {
                               const SnackBar(
                                   content: Text('Data Ibu Hamil ditambahkan')));
 
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) => const HomePregnant(),

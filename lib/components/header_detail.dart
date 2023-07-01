@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mypregnant/view/tbc/add_tbc.dart';
 
 AppBar headerdetail(context,
     {bool isTitle = false, required String titleText}) {

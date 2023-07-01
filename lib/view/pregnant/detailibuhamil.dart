@@ -96,9 +96,6 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  // onChanged: (value) {
-                  //   bbpreg = value;
-                  // },
                   initialValue: widget.formatDate,
                   readOnly: true,
                 ),

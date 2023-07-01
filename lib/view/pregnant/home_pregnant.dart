@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mypregnant/components/header.dart';
 import 'package:mypregnant/view/pregnant/daftar_pregnant.dart';
-import 'package:mypregnant/view/pregnant/detailibuhamil.dart';
 import 'package:mypregnant/view/pregnant/wawasan_ibuhamil.dart';
-import 'package:mypregnant/view/tbc/daftardata_tbc.dart';
 
 class HomePregnant extends StatefulWidget {
   const HomePregnant({super.key});

@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mypregnant/model/tbc_model.dart';
 
 class TbcController {
-  final tbcCollection = FirebaseFirestore.instance.collection('tubercolosis');
+  final tbcCollection = FirebaseFirestore.instance.collection('tubercolosiss');
 
   final StreamController<List<DocumentSnapshot>> streamController =
       StreamController<List<DocumentSnapshot>>.broadcast();
@@ -21,7 +21,7 @@ class TbcController {
     final TbcModel tbcModel = TbcModel(
         tbcid: docId,
         hari: tbcmodel.hari,
-        datetime: tbcmodel.datetime,
+        formattgl: tbcmodel.formattgl,
         beratbadan: tbcmodel.beratbadan,
         keluhan: tbcmodel.keluhan,
         tindakan: tbcmodel.tindakan);
@@ -33,7 +33,7 @@ class TbcController {
     final TbcModel tbcModel = TbcModel(
         tbcid: tbcmodel.tbcid,
         hari: tbcmodel.hari,
-        datetime: tbcmodel.datetime,
+        formattgl: tbcmodel.formattgl,
         beratbadan: tbcmodel.beratbadan,
         keluhan: tbcmodel.keluhan,
         tindakan: tbcmodel.tindakan);
@@ -45,7 +45,7 @@ class TbcController {
     final TbcModel tbcModel = TbcModel(
         tbcid: tbcmodel.tbcid,
         hari: tbcmodel.hari,
-        datetime: tbcmodel.datetime,
+        formattgl: tbcmodel.formattgl,
         beratbadan: tbcmodel.beratbadan,
         keluhan: tbcmodel.keluhan,
         tindakan: tbcmodel.tindakan);
