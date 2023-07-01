@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:mypregnant/components/header.dart';
 import 'package:mypregnant/controller/tbc_controller.dart';
 import 'package:mypregnant/model/tbc_model.dart';
-import 'package:mypregnant/view/tbc/daftardata_tbc.dart';
+import 'package:mypregnant/view/tbc/home_tbc.dart';
 
 class AddTbc extends StatefulWidget {
   const AddTbc({super.key});
@@ -265,7 +265,7 @@ class _AddTbcState extends State<AddTbc> {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const DaftarTbc(),
+                              builder: (context) => const HomeTbc(),
                             ),
                           );
                         }

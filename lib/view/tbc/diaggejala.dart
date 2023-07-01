@@ -100,16 +100,28 @@ class _DiagnosisGejalaState extends State<DiagnosisGejala> {
         String diagnosisResult = '';
 
         if (selectedSymptoms.isEmpty) {
-          diagnosisResult = 'No symptoms selected.';
-        } else if (selectedSymptoms.contains('Demam') ||
-            selectedSymptoms.contains('Batuk')) {
-          diagnosisResult = 'Gejala ringan';
-        } else if (selectedSymptoms.contains('Checkbox 2')) {
-          diagnosisResult = 'Diagnosis for Checkbox 2.';
-        } else if (selectedSymptoms.contains('Checkbox 3')) {
-          diagnosisResult = 'Diagnosis for Checkbox 3.';
+          diagnosisResult = 'Tidak ada gejala yang dipilih';
+        } else if (selectedSymptoms.contains('Sesak Nafas')) {
+          diagnosisResult = 'TBC Paru - Paru';
+        } else if (selectedSymptoms.contains('Urine Berdarah') ||
+            selectedSymptoms.contains('Sesak Nafas')) {
+          diagnosisResult = 'TBC Ginjal';
+        } else if (selectedSymptoms.contains('Nyeri Punggung') ||
+            selectedSymptoms.contains('Sesak Nafas')) {
+          diagnosisResult = 'TBC Tulang Belakang';
+        } else if (selectedSymptoms
+                .contains('Pembengkakan kelenjar getah bening') ||
+            selectedSymptoms.contains('Sesak Nafas')) {
+          diagnosisResult = 'TBC Kelenjar';
+        } else if (selectedSymptoms.contains('Sakit Perut Hebat') ||
+            selectedSymptoms.contains('Sesak Nafas')) {
+          diagnosisResult = 'TBC Usus';
+        } else if (selectedSymptoms.contains('Sakit kepala dan kejang') ||
+            selectedSymptoms.contains('Sesak Nafas')) {
+          diagnosisResult = 'TBC di Otak';
         } else {
-          diagnosisResult = 'Diagnosis for other combination of symptoms.';
+          diagnosisResult =
+              'tidak sesuai dengan diagnosis yang ada silahkan ke rumah sakit';
         }
 
         return AlertDialog(

@@ -4,6 +4,8 @@ import 'package:mypregnant/model/user_model.dart';
 import 'package:mypregnant/view/homepage.dart';
 import 'package:mypregnant/view/register_page.dart';
 
+String userId = "";
+
 class LoginPage extends StatefulWidget {
   LoginPage({super.key});
 
@@ -60,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                   controller: _controllerUsername,
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
-                    labelText: "Username",
+                    labelText: "Email",
                     prefixIcon: const Icon(Icons.person_outline),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -117,6 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                         if (_formKey.currentState!.validate()) {
                           UserModel? registeredUser = await authctrl
                               .signInWithEmailAndPassword(email!, password!);
+                          userId = registeredUser!.Uid;
 
                           if (registeredUser != null) {
                             // Registration successful

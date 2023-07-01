@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mypregnant/view/pregnant/home_pregnant.dart';
 import 'package:mypregnant/view/profile.dart';
 
 AppBar header(context, {bool isTitle = false, required String titleText}) {
@@ -26,5 +27,15 @@ AppBar header(context, {bool isTitle = false, required String titleText}) {
       ],
     ),
     backgroundColor: const Color.fromARGB(255, 152, 100, 161),
+    leading: IconButton(
+        onPressed: () {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => HomePregnant()));
+        },
+        icon: const Icon(
+          Icons.arrow_back_rounded,
+          color: Colors.white,
+        )),
+    automaticallyImplyLeading: false,
   );
 }
