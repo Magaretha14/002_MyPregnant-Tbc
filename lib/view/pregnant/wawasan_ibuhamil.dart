@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mypregnant/view/pregnant/content/saranmakan.dart';
+import 'package:mypregnant/view/pregnant/content/sarantidur.dart';
+import 'package:mypregnant/view/pregnant/content/stunting.dart';
+import 'package:mypregnant/view/pregnant/content/tips_menyusui.dart';
+import 'package:mypregnant/view/pregnant/content/tipshamil.dart';
+import 'package:mypregnant/view/pregnant/content/tipskerja_hamil.dart';
 
 class WawasanPregnant extends StatefulWidget {
   const WawasanPregnant({super.key});
@@ -21,10 +27,11 @@ class _WawasanPregnantState extends State<WawasanPregnant> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => HomePregnant()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const TipsHamil()),
+                    );
                   },
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -43,10 +50,11 @@ class _WawasanPregnantState extends State<WawasanPregnant> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => HomeTbc()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SaranMakanan()),
+                    );
                   },
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -73,10 +81,11 @@ class _WawasanPregnantState extends State<WawasanPregnant> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => HomePregnant()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SaranTidur()),
+                    );
                   },
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -95,10 +104,11 @@ class _WawasanPregnantState extends State<WawasanPregnant> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => HomeTbc()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const TipsMenyusui()),
+                    );
                   },
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -125,10 +135,11 @@ class _WawasanPregnantState extends State<WawasanPregnant> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => HomePregnant()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const TipsKerja()),
+                    );
                   },
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -147,10 +158,10 @@ class _WawasanPregnantState extends State<WawasanPregnant> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => HomeTbc()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Stunting()),
+                    );
                   },
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 16.0),
