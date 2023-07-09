@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mypregnant/components/header.dart';
 import 'package:mypregnant/components/header_profile.dart';
@@ -15,7 +16,10 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  final DocumentReference<Object?> docname = usersCollection.doc(userId);
+  final User? currentUser = FirebaseAuth.instance.currentUser;
+  // final DocumentReference<Object?> docname =
+  //     usersCollection.doc(currentUser!.uid);
+  //final DocumentReference<Object?> docname = usersCollection.doc(userId);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +27,7 @@ class _ProfileState extends State<Profile> {
       appBar: headerProfile(context, titleText: 'Profile'),
       body: SafeArea(
         child: StreamBuilder<DocumentSnapshot>(
-          stream: usersCollection.doc(userId).snapshots(),
+          stream: usersCollection.doc(currentUser?.uid).snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
             if (snapshot.hasError) {

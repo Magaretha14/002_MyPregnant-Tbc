@@ -3,6 +3,9 @@ import 'package:mypregnant/components/header.dart';
 import 'package:mypregnant/view/pregnant/home_pregnant.dart';
 import 'package:mypregnant/view/tbc/home_tbc.dart';
 
+import '../controller/auth_controller.dart';
+import 'login_page.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -101,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-          )
+          ),
         ],
       )),
     );
