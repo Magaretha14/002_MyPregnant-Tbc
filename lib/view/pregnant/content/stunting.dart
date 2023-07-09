@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mypregnant/components/header.dart';
+import 'package:mypregnant/components/header_detail.dart';
 
 class Stunting extends StatelessWidget {
   const Stunting({super.key});
@@ -6,6 +8,7 @@ class Stunting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: headerdetail(context, titleText: 'Tips terhindar dari stunting'),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

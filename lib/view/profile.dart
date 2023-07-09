@@ -25,6 +25,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: headerProfile(context, titleText: 'Profile'),
+      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       body: SafeArea(
         child: StreamBuilder<DocumentSnapshot>(
           stream: usersCollection.doc(currentUser?.uid).snapshots(),

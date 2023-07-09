@@ -57,7 +57,13 @@ class _DaftarTbcState extends State<DaftarTbc> {
                                     keluhan: datatbc[index]['keluhan'],
                                     tindakan: datatbc[index]['tindakan']),
                               ),
-                            );
+                            ).then((value) {
+                              if (value == true) {
+                                setState(() {
+                                  tbcctrl.getTbc();
+                                });
+                              }
+                            });
                           },
                           child: Card(
                             elevation: 10,
@@ -99,7 +105,13 @@ class _DaftarTbcState extends State<DaftarTbc> {
             MaterialPageRoute(
               builder: (context) => const AddTbc(),
             ),
-          );
+          ).then((value) {
+            if (value == true) {
+              setState(() {
+                tbcctrl.getTbc();
+              });
+            }
+          });
         },
         child: const Icon(Icons.add),
       ),

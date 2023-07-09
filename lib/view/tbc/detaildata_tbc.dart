@@ -206,7 +206,13 @@ class _DetailDataTbcState extends State<DetailDataTbc> {
                                 keluhan: widget.keluhan,
                                 tindakan: widget.tindakan),
                           ),
-                        );
+                        ).then((value) {
+                          if (value == true) {
+                            setState(() {
+                              tbcctrl.getTbc();
+                            });
+                          }
+                        });
                       },
                       child: const Text("Edit"),
                     ),

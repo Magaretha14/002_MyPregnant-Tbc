@@ -46,10 +46,6 @@ class _DaftarPregnantState extends State<DaftarPregnant> {
                         padding: const EdgeInsets.all(5.0),
                         child: InkWell(
                           onTap: () {
-                            // String dateString = datapreg[index]
-                            //     ['formatDate']; // Nilai string dari datapreg
-
-                            // DateTime dateTime = DateTime.parse(dateString);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -64,7 +60,13 @@ class _DaftarPregnantState extends State<DaftarPregnant> {
                                   tindakan: datapreg[index]['tindakan'],
                                 ),
                               ),
-                            );
+                            ).then((value) {
+                              if (value == true) {
+                                setState(() {
+                                  pregctrl.getPreg();
+                                });
+                              }
+                            });
                             print(datapreg[index]['formatDate'].toString());
                           },
                           child: Card(
@@ -108,7 +110,13 @@ class _DaftarPregnantState extends State<DaftarPregnant> {
             MaterialPageRoute(
               builder: (context) => const AddPregnant(),
             ),
-          );
+          ).then((value) {
+            if (value == true) {
+              setState(() {
+                pregctrl.getPreg();
+              });
+            }
+          });
         },
         child: const Icon(Icons.add),
       ),

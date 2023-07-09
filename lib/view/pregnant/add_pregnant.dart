@@ -80,6 +80,7 @@ class _AddPregnantState extends State<AddPregnant> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
+                  validator: validateUmurHamil,
                   onChanged: (value) {
                     usiajanin = value;
                   },
@@ -119,6 +120,7 @@ class _AddPregnantState extends State<AddPregnant> {
                     ),
                   ),
                   readOnly: true,
+                  validator: validateTanggal,
                   onTap: () async {
                     DateTime? tanggal = await showDatePicker(
                       context: context,
@@ -161,6 +163,7 @@ class _AddPregnantState extends State<AddPregnant> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
+                  validator: validateBb,
                   onChanged: (value) {
                     bbpreg = value;
                   },
@@ -232,6 +235,7 @@ class _AddPregnantState extends State<AddPregnant> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
+                  validator: validateKeluhan,
                   onChanged: (value) {
                     keluhan = value;
                   },
@@ -271,6 +275,7 @@ class _AddPregnantState extends State<AddPregnant> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
+                  validator: validateTindakan,
                   onChanged: (value) {
                     tindakan = value;
                   },
@@ -297,6 +302,7 @@ class _AddPregnantState extends State<AddPregnant> {
                       ),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
                           PregnantModel pm = PregnantModel(
                               usiajanin: usiajanin!,
                               formatDate: datetimeinput.text,
@@ -310,12 +316,14 @@ class _AddPregnantState extends State<AddPregnant> {
                               const SnackBar(
                                   content: Text('Data Ibu Hamil ditambahkan')));
 
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomePregnant(),
-                            ),
-                          );
+                          Navigator.pop(context, true);
+
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => const HomePregnant(),
+                          //   ),
+                          // );
                         }
                       },
                       child: const Text("Simpan"),
@@ -329,4 +337,39 @@ class _AddPregnantState extends State<AddPregnant> {
       ),
     );
   }
+}
+
+String? validateUmurHamil(String? value) {
+  if (value == null || value.isEmpty) {
+    return "Tolong masukan umur kehamilan anda";
+  }
+  return null;
+}
+
+String? validateTanggal(String? value) {
+  if (value == null || value.isEmpty) {
+    return "Tolong masukan tanggal";
+  }
+  return null;
+}
+
+String? validateBb(String? value) {
+  if (value == null || value.isEmpty) {
+    return "Tolong masukan Berat Badan";
+  }
+  return null;
+}
+
+String? validateKeluhan(String? value) {
+  if (value == null || value.isEmpty) {
+    return "Tolong masukan Keluhan";
+  }
+  return null;
+}
+
+String? validateTindakan(String? value) {
+  if (value == null || value.isEmpty) {
+    return "Tolong masukan Tindakan";
+  }
+  return null;
 }

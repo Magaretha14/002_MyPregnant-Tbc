@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:mypregnant/components/header_detail.dart';
 import 'package:mypregnant/controller/pregnant_controller.dart';
+import 'package:mypregnant/model/pregnant_model.dart';
 import 'package:mypregnant/view/pregnant/update_pregnant.dart';
 
 class DetailIbuHamil extends StatefulWidget {
@@ -32,6 +33,13 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
   final _formKey = GlobalKey<FormState>();
 
   var pregController = PregnantController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    pregController.getPreg();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -235,7 +243,13 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                                 keluhan: widget.keluhan,
                                 tindakan: widget.tindakan),
                           ),
-                        );
+                        ).then((value) {
+                          if (value == true) {
+                            setState(() {
+                              pregController.getPreg();
+                            });
+                          }
+                        });
                       },
                       child: const Text("Edit"),
                     ),

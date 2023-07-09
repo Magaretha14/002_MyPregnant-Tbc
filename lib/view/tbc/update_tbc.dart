@@ -274,12 +274,15 @@ class _UpdateTbcState extends State<UpdateTbc> {
                               const SnackBar(
                                   content: Text('Data Anda telah diedit')));
 
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomeTbc(),
-                            ),
-                          );
+                          Navigator.pop(context, true);
+                          Navigator.pop(context, true);
+
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => const HomeTbc(),
+                          //   ),
+                          // );
                         }
                       },
                       child: const Text("Simpan"),

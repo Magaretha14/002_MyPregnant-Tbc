@@ -76,6 +76,7 @@ class _AddTbcState extends State<AddTbc> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
+                  validator: validateHari,
                   onChanged: (value) {
                     hari = value;
                   },
@@ -115,6 +116,7 @@ class _AddTbcState extends State<AddTbc> {
                     ),
                   ),
                   readOnly: true,
+                  validator: validateTanggal,
                   onTap: () async {
                     DateTime? picktanggal = await showDatePicker(
                       context: context,
@@ -157,6 +159,7 @@ class _AddTbcState extends State<AddTbc> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
+                  validator: validateBb,
                   onChanged: (value) {
                     beratbadan = value;
                   },
@@ -196,6 +199,7 @@ class _AddTbcState extends State<AddTbc> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
+                  validator: validateKeluhan,
                   onChanged: (value) {
                     keluhan = value;
                   },
@@ -225,6 +229,7 @@ class _AddTbcState extends State<AddTbc> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
+                  validator: validateTindakan,
                   onChanged: (value) {
                     tindakan = value;
                   },
@@ -251,6 +256,7 @@ class _AddTbcState extends State<AddTbc> {
                       ),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
                           TbcModel tm = TbcModel(
                               hari: hari!,
                               formattgl: inputtgl.text,
@@ -262,12 +268,14 @@ class _AddTbcState extends State<AddTbc> {
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Data Tbc Added')));
 
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomeTbc(),
-                            ),
-                          );
+                          Navigator.pop(context, true);
+
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => const HomeTbc(),
+                          //   ),
+                          // );
                         }
                       },
                       child: const Text("Simpan"),
@@ -281,4 +289,39 @@ class _AddTbcState extends State<AddTbc> {
       ),
     );
   }
+}
+
+String? validateHari(String? value) {
+  if (value == null || value.isEmpty) {
+    return "Tolong masukan Hari ke - ";
+  }
+  return null;
+}
+
+String? validateTanggal(String? value) {
+  if (value == null || value.isEmpty) {
+    return "Tolong masukan tanggal ";
+  }
+  return null;
+}
+
+String? validateBb(String? value) {
+  if (value == null || value.isEmpty) {
+    return "Tolong masukan berat badan anda ";
+  }
+  return null;
+}
+
+String? validateKeluhan(String? value) {
+  if (value == null || value.isEmpty) {
+    return "Tolong masukan keluhan anda ";
+  }
+  return null;
+}
+
+String? validateTindakan(String? value) {
+  if (value == null || value.isEmpty) {
+    return "Tolong masukan tindakan";
+  }
+  return null;
 }

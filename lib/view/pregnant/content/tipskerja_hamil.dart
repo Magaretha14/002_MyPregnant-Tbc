@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mypregnant/components/header.dart';
+import 'package:mypregnant/components/header_detail.dart';
 
 class TipsKerja extends StatefulWidget {
   const TipsKerja({super.key});
@@ -11,6 +13,7 @@ class _TipsKerjaState extends State<TipsKerja> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: headerdetail(context, titleText: 'Tips Kerja Saat Hamil'),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

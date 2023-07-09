@@ -22,21 +22,15 @@ AppBar headerProfile(context,
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => LoginPage()));
             },
-            child: const Text('Logout'),
+            child: const Text(
+              'Logout',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         )
       ],
     ),
     backgroundColor: const Color.fromARGB(255, 152, 100, 161),
-    // leading: IconButton(
-    //     onPressed: () {
-    //       Navigator.pushReplacement(
-    //           context, MaterialPageRoute(builder: (context) => HomePregnant()));
-    //     },
-    //     icon: const Icon(
-    //       Icons.arrow_back_rounded,
-    //       color: Colors.white,
-    //     )),
     automaticallyImplyLeading: true,
   );
 }

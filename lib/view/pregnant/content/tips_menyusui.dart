@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mypregnant/components/header.dart';
+import 'package:mypregnant/components/header_detail.dart';
 
 class TipsMenyusui extends StatelessWidget {
   const TipsMenyusui({super.key});
@@ -6,6 +8,7 @@ class TipsMenyusui extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: headerdetail(context, titleText: 'Tips Menyusui'),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
