@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mypregnant/controller/diaggejala_controller.dart';
+import 'package:mypregnant/model/diaggejala_model.dart';
 
 class DiagnosisGejala extends StatefulWidget {
   const DiagnosisGejala({super.key});
@@ -8,6 +10,7 @@ class DiagnosisGejala extends StatefulWidget {
 }
 
 class _DiagnosisGejalaState extends State<DiagnosisGejala> {
+  var diagctrl = DiaggejalaController();
   List<Map<String, dynamic>> data = [
     {
       'id': 'Sesak Nafas',
@@ -97,7 +100,7 @@ class _DiagnosisGejalaState extends State<DiagnosisGejala> {
           }
         }
 
-        String diagnosisResult = '';
+        String diagnosisResult;
 
         if (selectedSymptoms.isEmpty) {
           diagnosisResult = 'Tidak ada gejala yang dipilih';
@@ -123,6 +126,11 @@ class _DiagnosisGejalaState extends State<DiagnosisGejala> {
           diagnosisResult =
               'tidak sesuai dengan diagnosis yang ada silahkan ke rumah sakit';
         }
+        DiaggejalaModel dm = DiaggejalaModel(
+            selectedSymptoms: selectedSymptoms,
+            diagnosisResult: diagnosisResult,
+            diagid: '');
+        diagctrl.addDiagnosis(dm);
 
         return AlertDialog(
           title: const Text('Diagnosis Result'),

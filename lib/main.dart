@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mypregnant/view/homepage.dart';
 import 'package:mypregnant/view/pregnant/wawasan_ibuhamil.dart';
 
 Future main() async {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: WawasanPregnant(),
+      home: HomePage(),
     );
   }
 }
