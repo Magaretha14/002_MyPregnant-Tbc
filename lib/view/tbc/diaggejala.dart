@@ -5,13 +5,20 @@ import 'package:mypregnant/model/diaggejala_model.dart';
 class DiagnosisGejala extends StatefulWidget {
   const DiagnosisGejala({super.key});
 
+  /// Konstruktor kelas DiagnosisGejala.
+
   @override
   State<DiagnosisGejala> createState() => _DiagnosisGejalaState();
+
+  /// Membuat state untuk DiagnosisGejala.
 }
 
 class _DiagnosisGejalaState extends State<DiagnosisGejala> {
   var diagctrl = DiaggejalaController();
+
+  /// Controller untuk diagnosis gejala.
   List<Map<String, dynamic>> data = [
+    /// Data gejala dengan ID dan nilai awal.
     {
       'id': 'Sesak Nafas',
       'value': false,
@@ -39,6 +46,8 @@ class _DiagnosisGejalaState extends State<DiagnosisGejala> {
   ];
 
   bool showDiagnosis = false;
+
+  /// Status untuk menampilkan dialog diagnosis.
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -8,11 +8,23 @@ class DetailDataTbc extends StatefulWidget {
   const DetailDataTbc({
     Key? key,
     this.tbcid,
+
+    /// ID unik untuk data TBC.
     this.hari,
+
+    /// Hari pengobatan.
     this.formattgl,
+
+    /// Tanggal pengobatan yang diformat.
     this.bb,
+
+    /// Berat badan.
     this.keluhan,
+
+    /// Keluhan pasien.
     this.tindakan,
+
+    /// Tindakan yang diberikan.
   }) : super(key: key);
 
   @override
@@ -34,7 +46,11 @@ class _DetailDataTbcState extends State<DetailDataTbc> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: headerdetail(context, titleText: 'Detail Data Tbc'),
+
+      /// Menampilkan app bar dengan judul kustom.
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+
+      /// Mengatur warna latar belakang berdasarkan tema.
       body: SafeArea(
         child: Form(
           key: _formKey,
@@ -43,6 +59,8 @@ class _DetailDataTbcState extends State<DetailDataTbc> {
             child: Column(
               children: [
                 const SizedBox(height: 20),
+
+                /// Menambahkan jarak atas.
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(

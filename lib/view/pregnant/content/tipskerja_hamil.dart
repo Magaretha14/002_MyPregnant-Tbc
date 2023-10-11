@@ -14,6 +14,8 @@ class _TipsKerjaState extends State<TipsKerja> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: headerdetail(context, titleText: 'Tips Kerja Saat Hamil'),
+
+      /// Custom app bar.
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -34,6 +36,8 @@ class _TipsKerjaState extends State<TipsKerja> {
                         image: const DecorationImage(
                           fit: BoxFit.fill,
                           image: AssetImage('images/tipskerjasaathamidun.png'),
+
+                          /// Image asset.
                         ),
                       ),
                     ),
@@ -45,6 +49,8 @@ class _TipsKerjaState extends State<TipsKerja> {
                 margin: const EdgeInsets.all(10),
                 child: const Text(
                   'Tips Bekerja Saat Hamil : ',
+
+                  /// Title text.
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -54,6 +60,8 @@ class _TipsKerjaState extends State<TipsKerja> {
                 child: const Text(
                   '1. Buat jadwal yang seimbang \n Usahakan untuk mengatur jadwal kerja yang seimbang dan hindari bekerja terlalu lama atau terlalu lelah. Istirahat secara teratur dan pastikan Anda mendapatkan waktu tidur yang cukup di malam hari.',
                   textAlign: TextAlign.justify,
+
+                  /// Text alignment.
                 ),
               ),
               Container(
@@ -62,6 +70,8 @@ class _TipsKerjaState extends State<TipsKerja> {
                 child: const Text(
                   '2. Perhatikan postur tubuh \n Pastikan Anda duduk dengan posisi yang nyaman dan memiliki dukungan yang baik untuk punggung Anda. Gunakan kursi yang ergonomis dan pastikan meja kerja Anda sesuai dengan tinggi Anda.',
                   textAlign: TextAlign.justify,
+
+                  /// Text alignment.
                 ),
               ),
               Container(
@@ -70,6 +80,8 @@ class _TipsKerjaState extends State<TipsKerja> {
                 child: const Text(
                   '3. Lakukan peregangan dan olahraga ringan \n Lakukan peregangan dan gerakan ringan di tempat kerja untuk menjaga sirkulasi dan mengurangi kekakuan tubuh. Pastikan untuk berbicara dengan dokter kandungan Anda tentang jenis olahraga yang aman untuk dilakukan selama kehamilan.',
                   textAlign: TextAlign.justify,
+
+                  /// Text alignment.
                 ),
               ),
               Container(
@@ -78,6 +90,8 @@ class _TipsKerjaState extends State<TipsKerja> {
                 child: const Text(
                   '4. Ambil cuti atau waktu kerja fleksibel \n Jika memungkinkan, pertimbangkan mengambil cuti atau mengatur waktu kerja yang lebih fleksibel menjelang persalinan atau saat bayi baru lahir. Ini akan memberi Anda waktu untuk istirahat dan menyesuaikan diri dengan perubahan yang terjadi.',
                   textAlign: TextAlign.justify,
+
+                  /// Text alignment.
                 ),
               ),
               Container(
@@ -86,6 +100,8 @@ class _TipsKerjaState extends State<TipsKerja> {
                 child: const Text(
                   '5. Jangan ragu untuk meminta bantuan \n Jika Anda merasa kewalahan atau memiliki kekhawatiran terkait bekerja saat hamil, jangan ragu untuk mencari dukungan dari pasangan, keluarga, atau teman-teman. Juga, konsultasikan dengan dokter kandungan Anda untuk saran yang lebih spesifik sesuai dengan situasi Anda.',
                   textAlign: TextAlign.justify,
+
+                  /// Text alignment.
                 ),
               ),
             ],

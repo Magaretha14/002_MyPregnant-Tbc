@@ -17,6 +17,8 @@ class _DaftarTbcState extends State<DaftarTbc> {
   @override
   void initState() {
     tbcctrl.getTbc();
+
+    /// Mengambil data TBC saat inisialisasi halaman
     super.initState();
   }
 
@@ -30,6 +32,8 @@ class _DaftarTbcState extends State<DaftarTbc> {
             Expanded(
               child: StreamBuilder<List<DocumentSnapshot>>(
                 stream: tbcctrl.stream,
+
+                /// Menggunakan stream dari TbcController
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return const Center(
@@ -46,6 +50,7 @@ class _DaftarTbcState extends State<DaftarTbc> {
                         padding: const EdgeInsets.all(5.0),
                         child: InkWell(
                           onLongPress: () {
+                            /// Navigasi ke halaman DetailDataTbc saat item ditekan lama
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -61,6 +66,8 @@ class _DaftarTbcState extends State<DaftarTbc> {
                               if (value == true) {
                                 setState(() {
                                   tbcctrl.getTbc();
+
+                                  /// Refresh data TBC setelah mengedit
                                 });
                               }
                             });
@@ -75,10 +82,13 @@ class _DaftarTbcState extends State<DaftarTbc> {
                               trailing: IconButton(
                                 icon: const Icon(Icons.delete),
                                 onPressed: () {
+                                  /// Menghapus data TBC saat tombol hapus ditekan
                                   tbcctrl.removeTbc(
                                       datatbc[index]['tbcid'].toString());
                                   setState(() {
                                     tbcctrl.getTbc();
+
+                                    /// Refresh data TBC setelah menghapus
                                   });
 
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -100,6 +110,7 @@ class _DaftarTbcState extends State<DaftarTbc> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          /// Navigasi ke halaman AddTbc saat tombol tambah ditekan
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -109,6 +120,8 @@ class _DaftarTbcState extends State<DaftarTbc> {
             if (value == true) {
               setState(() {
                 tbcctrl.getTbc();
+
+                /// Refresh data TBC setelah menambahkan data baru
               });
             }
           });

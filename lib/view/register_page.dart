@@ -8,46 +8,81 @@ import 'package:mypregnant/view/login_page.dart';
 class RegisterPage extends StatefulWidget {
   RegisterPage({super.key});
 
+  /// Kode ini adalah konstruktor untuk kelas RegisterPage.
+  /// Namun, tampaknya ada kesalahan sintaks dalam penggunaan "super.key".
+  /// Seharusnya menggunakan "Key key" sebagai parameter konstruktor.
+
   @override
   State<RegisterPage> createState() => _RegisterPageState();
+
+  /// Ini adalah metode yang mendeklarasikan State yang terkait dengan RegisterPage.
+  /// Ini akan digunakan untuk mengelola keadaan widget ini.
 }
 
 class _RegisterPageState extends State<RegisterPage> {
   final GlobalKey<FormState> _formKey = GlobalKey();
 
+  /// Membuat kunci global untuk Form.
+
   bool _obscurePassword = true;
+
+  /// Variabel boolean untuk mengatur apakah password tersembunyi.
 
   final FocusNode _focusNodeEmail = FocusNode();
 
+  /// Node fokus untuk alamat email.
   final FocusNode _focusNodePassword = FocusNode();
 
+  /// Node fokus untuk password.
   final FocusNode _focusNodeConfirmPassword = FocusNode();
+
+  /// Node fokus untuk konfirmasi password.
 
   final TextEditingController _controllerUsername = TextEditingController();
 
+  /// Controller untuk input username.
   final TextEditingController _controllerEmail = TextEditingController();
 
+  /// Controller untuk input email.
   final TextEditingController _controllerPassword = TextEditingController();
+
+  /// Controller untuk input password.
 
   final authctrl = AuthController();
 
+  /// Membuat instance AuthController.
+
   String? name;
+
+  /// Variabel untuk menyimpan nama.
   String? email;
+
+  /// Variabel untuk menyimpan alamat email.
   String? password;
+
+  /// Variabel untuk menyimpan password.
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+
+      /// Mengatur warna latar belakang.
       body: SafeArea(
         child: Form(
           key: _formKey,
+
+          /// Menghubungkan kunci global ke Form.
           child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
+
+            /// Padding horizontal untuk konten.
             child: Column(
               children: [
                 Image.asset(
                   'images/logomypreg.png',
+
+                  /// Menampilkan gambar dengan path tertentu.
                   height: 200,
                   width: 150,
                 ),
@@ -80,6 +115,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   onEditingComplete: () => _focusNodeEmail.requestFocus(),
                   onChanged: (value) {
                     name = value;
+
+                    /// Mengisi variabel "name" dengan nilai dari input username.
                   },
                 ),
                 const SizedBox(height: 10),
@@ -100,6 +137,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   onEditingComplete: () => _focusNodePassword.requestFocus(),
                   onChanged: (value) {
                     email = value;
+
+                    /// Mengisi variabel "email" dengan nilai dari input email.
                   },
                 ),
                 const SizedBox(height: 10),
@@ -115,6 +154,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         onPressed: () {
                           setState(() {
                             _obscurePassword = !_obscurePassword;
+
+                            /// Mengganti status tersembunyi password.
                           });
                         },
                         icon: _obscurePassword
@@ -131,6 +172,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       _focusNodeConfirmPassword.requestFocus(),
                   onChanged: (value) {
                     password = value;
+
+                    /// Mengisi variabel "password" dengan nilai dari input password.
                   },
                 ),
                 const SizedBox(height: 50),
@@ -145,12 +188,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
+                          /// Validasi formulir berhasil.
                           UserModel? registeredUser =
                               await authctrl.registerWithEmailAndPassword(
                                   email!, password!, name!);
 
+                          /// Mencoba mendaftarkan pengguna.
+
                           if (registeredUser != null) {
-                            // Registration successful
+                            /// Pendaftaran berhasil.
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
@@ -167,7 +213,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                                 builder: (context) {
                                           return LoginPage();
                                         }));
-                                        // Navigate to the next screen or perform any desired action
+
+                                        /// Beralih ke halaman login atau lakukan tindakan yang diinginkan.
                                       },
                                       child: const Text('OK'),
                                     ),
@@ -176,7 +223,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               },
                             );
                           } else {
-                            // Registration failed
+                            /// Pendaftaran gagal.
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {

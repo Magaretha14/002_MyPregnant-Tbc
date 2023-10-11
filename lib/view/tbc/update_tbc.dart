@@ -6,6 +6,7 @@ import 'package:mypregnant/controller/tbc_controller.dart';
 import 'package:mypregnant/model/tbc_model.dart';
 import 'package:mypregnant/view/tbc/home_tbc.dart';
 
+/// Kelas ini mewakili StatefulWidget untuk mengupdate data Tbc.
 class UpdateTbc extends StatefulWidget {
   const UpdateTbc({
     Key? key,
@@ -28,6 +29,7 @@ class UpdateTbc extends StatefulWidget {
   final String? tindakan;
 }
 
+/// Kelas ini mewakili state untuk mengupdate data Tbc.
 class _UpdateTbcState extends State<UpdateTbc> {
   final _formKey = GlobalKey<FormState>();
 
@@ -43,7 +45,7 @@ class _UpdateTbcState extends State<UpdateTbc> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    // Inisialisasi tanggal input dengan nilai awal dari widget.
     newinputtgl.text = widget.formattgl ?? '';
     super.initState();
   }
@@ -92,7 +94,7 @@ class _UpdateTbcState extends State<UpdateTbc> {
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
-                    '*hanya masukan angkanya saja, contoh : 1',
+                    '*hanya masukkan angkanya saja, contoh: 1',
                     style: TextStyle(
                         color: Colors.red,
                         fontSize: 15,
@@ -173,7 +175,7 @@ class _UpdateTbcState extends State<UpdateTbc> {
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
-                    '*contoh : 40 Kg',
+                    '*contoh: 40 Kg',
                     style: TextStyle(
                         color: Colors.red,
                         fontSize: 15,
@@ -241,7 +243,7 @@ class _UpdateTbcState extends State<UpdateTbc> {
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
-                    '*jika tidak ada tindakan isi dengan tanda " - " saja',
+                    '*jika tidak ada tindakan, isi dengan tanda "-" saja',
                     style: TextStyle(
                         color: Colors.red,
                         fontSize: 15,

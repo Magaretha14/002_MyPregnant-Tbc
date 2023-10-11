@@ -18,6 +18,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: header(context, titleText: 'My Pregnant & Tbc'),
+
+      /// Membuat AppBar dengan judul 'My Pregnant & Tbc'.
       body: SafeArea(
           child: Column(
         children: [
@@ -37,6 +39,8 @@ class _HomePageState extends State<HomePage> {
                     image: const DecorationImage(
                       fit: BoxFit.fill,
                       image: AssetImage('images/tipspreg.png'),
+
+                      /// Menampilkan gambar tipspreg.png dengan latar belakang warna pink.
                     ),
                   ),
                 ),
@@ -48,6 +52,8 @@ class _HomePageState extends State<HomePage> {
                     image: const DecorationImage(
                       fit: BoxFit.fill,
                       image: AssetImage('images/tbc.png'),
+
+                      /// Menampilkan gambar tbc.png dengan latar belakang warna ungu.
                     ),
                   ),
                 ),
@@ -63,6 +69,8 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => HomePregnant()),
+
+                      /// Navigasi ke halaman HomePregnant saat gambar ditekan.
                     );
                   },
                   child: Container(
@@ -74,6 +82,8 @@ class _HomePageState extends State<HomePage> {
                     child: SizedBox(
                       child: Image.asset(
                         'images/iconhamil.png',
+
+                        /// Menampilkan gambar iconhamil.png dengan latar belakang warna tertentu.
                         height: 100,
                         width: 150,
                       ),
@@ -85,6 +95,8 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => HomeTbc()),
+
+                      /// Navigasi ke halaman HomeTbc saat gambar ditekan.
                     );
                   },
                   child: Container(
@@ -96,6 +108,8 @@ class _HomePageState extends State<HomePage> {
                     child: SizedBox(
                       child: Image.asset(
                         'images/icontbc.png',
+
+                        /// Menampilkan gambar icontbc.png dengan latar belakang warna tertentu.
                         height: 100,
                         width: 150,
                       ),

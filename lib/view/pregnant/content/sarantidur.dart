@@ -9,6 +9,8 @@ class SaranTidur extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: headerdetail(context, titleText: 'Saran posisi tidur'),
+
+      /// Custom app bar.
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -29,6 +31,8 @@ class SaranTidur extends StatelessWidget {
                         image: const DecorationImage(
                           fit: BoxFit.fill,
                           image: AssetImage('images/sarantidurbumil.png'),
+
+                          /// Image asset.
                         ),
                       ),
                     ),
@@ -40,6 +44,8 @@ class SaranTidur extends StatelessWidget {
                 margin: const EdgeInsets.all(10),
                 child: const Text(
                   'Saran Posisi Tidur Selama Kehamilan : ',
+
+                  /// Title text.
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -49,6 +55,8 @@ class SaranTidur extends StatelessWidget {
                 child: const Text(
                   '1. Tidur pada sisi kiri \n Tidur pada sisi kiri dianggap sebagai posisi terbaik selama kehamilan. Ini membantu meningkatkan aliran darah dan nutrisi ke plasenta, memfasilitasi sirkulasi yang sehat bagi bayi, dan mencegah tekanan pada vena cava inferior (pembuluh darah besar di sebelah kanan rahim).',
                   textAlign: TextAlign.justify,
+
+                  /// Text alignment.
                 ),
               ),
               Container(
@@ -57,6 +65,8 @@ class SaranTidur extends StatelessWidget {
                 child: const Text(
                   '2. Gunakan bantal tubuh \n Menggunakan bantal tubuh atau bantal khusus kehamilan dapat memberikan dukungan tambahan dan membantu menjaga posisi yang nyaman saat tidur. Anda dapat meletakkan bantal di antara lutut, di bawah perut, dan di belakang punggung untuk mengurangi tekanan pada tubuh.',
                   textAlign: TextAlign.justify,
+
+                  /// Text alignment.
                 ),
               ),
               Container(
@@ -65,6 +75,8 @@ class SaranTidur extends StatelessWidget {
                 child: const Text(
                   '3. Jaga kenyamanan \n Pastikan tempat tidur Anda nyaman dengan menggunakan kasur yang sesuai, bantal yang tepat, dan lingkungan tidur yang tenang dan gelap. Anda juga dapat mencoba teknik pernapasan, meditasi, atau mendengarkan musik yang menenangkan sebelum tidur untuk membantu Anda rileks.',
                   textAlign: TextAlign.justify,
+
+                  /// Text alignment.
                 ),
               ),
             ],

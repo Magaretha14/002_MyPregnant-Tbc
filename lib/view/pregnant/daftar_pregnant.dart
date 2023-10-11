@@ -4,6 +4,7 @@ import 'package:mypregnant/controller/pregnant_controller.dart';
 import 'package:mypregnant/view/pregnant/add_pregnant.dart';
 import 'package:mypregnant/view/pregnant/detailibuhamil.dart';
 
+/// A widget for displaying a list of pregnant records.
 class DaftarPregnant extends StatefulWidget {
   const DaftarPregnant({super.key});
 

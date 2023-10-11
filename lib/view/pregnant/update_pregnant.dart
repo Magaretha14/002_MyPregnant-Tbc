@@ -9,12 +9,26 @@ class UpdatePregnant extends StatefulWidget {
   const UpdatePregnant({
     Key? key,
     this.pregid,
+
+    /// ID ibu hamil
     this.usiajanin,
+
+    /// Usia kehamilan
     this.formatDate,
+
+    /// Format tanggal
     this.bbpreg,
+
+    /// Berat badan ibu hamil
     this.selectedvalue,
+
+    /// Nilai terpilih (kaki bengkak)
     this.keluhan,
+
+    /// Keluhan
     this.tindakan,
+
+    /// Tindakan yang diambil
   }) : super(key: key);
 
   final String? pregid;
@@ -27,6 +41,8 @@ class UpdatePregnant extends StatefulWidget {
 
   @override
   State<UpdatePregnant> createState() => _UpdatePregnantState();
+
+  /// Membuat state untuk UpdatePregnant
 }
 
 class _UpdatePregnantState extends State<UpdatePregnant> {
@@ -68,7 +84,11 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: headerdetail(context, titleText: 'Edit Data Ibu Hamil'),
+
+      /// Tampilan app bar dengan judul 'Edit Data Ibu Hamil'
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+
+      /// Set warna latar belakang
       body: SafeArea(
         child: Form(
           key: _formKey,
@@ -80,6 +100,8 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                   alignment: Alignment.centerLeft,
                   child: const Text(
                     'Umur Kehamilan :',
+
+                    /// Label usia kehamilan
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -91,6 +113,8 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.calendar_view_day_rounded),
+
+                    /// Ikon kalender untuk input
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -102,12 +126,18 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                     newusiajanin = value;
                   },
                   initialValue: widget.usiajanin,
+
+                  /// Nilai awal dari properti widget
                 ),
                 const SizedBox(height: 10),
+
+                /// Spasi
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
                     'Tanggal :',
+
+                    /// Label tanggal
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -120,6 +150,8 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                   decoration: InputDecoration(
                     //hintText: "Pilih Tanggal",
                     suffixIcon: const Icon(Icons.event),
+
+                    /// Ikon event untuk input
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -128,8 +160,9 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                     ),
                   ),
                   readOnly: true,
+
+                  /// Input hanya bisa dibaca
                   onTap: () async {
-                    //print(_newformatDate);
                     DateTime? tanggal = await showDatePicker(
                       context: context,
                       initialDate: DateTime.now(),
@@ -148,10 +181,14 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                   },
                 ),
                 const SizedBox(height: 10),
+
+                /// Spasi
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
                     'Berat badan :',
+
+                    /// Label berat badan
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -163,6 +200,8 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.boy_rounded),
+
+                    /// Ikon anak laki-laki untuk input
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -174,12 +213,18 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                     newbbpreg = value;
                   },
                   initialValue: widget.bbpreg,
+
+                  /// Nilai awal dari properti widget
                 ),
                 const SizedBox(height: 10),
+
+                /// Spasi
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
                     'Kaki bengkak :',
+
+                    /// Label kaki bengkak
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -197,21 +242,35 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                   child: DropdownButton(
                     borderRadius: BorderRadius.circular(10),
                     icon: const Icon(Icons.arrow_drop_down_circle_rounded),
+
+                    /// Ikon panah drop-down untuk input
                     dropdownColor: const Color.fromARGB(255, 223, 121, 238),
+
+                    /// Warna latar belakang dropdown
                     value: newselectedvalue,
+
+                    /// Nilai terpilih
                     items: generateItems(ket),
+
+                    /// Membuat item-item dropdown
                     onChanged: (item) {
                       setState(() {
                         newselectedvalue = item;
+
+                        /// Mengubah nilai terpilih saat dipilih
                       });
                     },
                   ),
                 ),
                 const SizedBox(height: 10),
+
+                /// Spasi
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
                     'Keluhan :',
+
+                    /// Label keluhan
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -223,6 +282,8 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.sick),
+
+                    /// Ikon sakit untuk input
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -234,12 +295,18 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                     newkeluhan = value;
                   },
                   initialValue: widget.keluhan,
+
+                  /// Nilai awal dari properti widget
                 ),
                 const SizedBox(height: 10),
+
+                /// Spasi
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
                     'Tindakan :',
+
+                    /// Label tindakan
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -251,6 +318,8 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.local_hospital_rounded),
+
+                    /// Ikon rumah sakit untuk input
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -262,8 +331,12 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                     newtindakan = value;
                   },
                   initialValue: widget.tindakan,
+
+                  /// Nilai awal dari properti widget
                 ),
                 const SizedBox(height: 30),
+
+                /// Spasi
                 Column(
                   children: [
                     ElevatedButton(
@@ -275,7 +348,10 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                       ),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
+                          /// Validasi form
                           _formKey.currentState!.save();
+
+                          /// Simpan data form
                           PregnantModel pm = PregnantModel(
                               pregid: widget.pregid,
                               usiajanin: newusiajanin!,
@@ -286,16 +362,26 @@ class _UpdatePregnantState extends State<UpdatePregnant> {
                               tindakan: newtindakan!);
 
                           pregController.updatePreg(pm);
+
+                          /// Memanggil fungsi untuk mengupdate data ibu hamil
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                   content:
                                       Text('Data Ibu Hamil berhasil diedit')));
 
+                          /// Menampilkan snackbar sukses
+
                           Navigator.pop(context, true);
+
+                          /// Kembali ke halaman sebelumnya dengan status berhasil
                           Navigator.pop(context, true);
+
+                          /// Kembali ke halaman sebelumnya dengan status berhasil
                         }
                       },
                       child: const Text("Edit"),
+
+                      /// Tombol Edit
                     ),
                   ],
                 ),

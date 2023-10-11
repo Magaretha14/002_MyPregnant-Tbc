@@ -5,6 +5,7 @@ import 'package:mypregnant/controller/tbc_controller.dart';
 import 'package:mypregnant/model/tbc_model.dart';
 import 'package:mypregnant/view/tbc/home_tbc.dart';
 
+/// A widget for adding a new TBC record.
 class AddTbc extends StatefulWidget {
   const AddTbc({super.key});
 
@@ -32,7 +33,6 @@ class _AddTbcState extends State<AddTbc> {
 
   @override
   Widget build(BuildContext context) {
-    //String formattedDate = DateFormat.yMMMEd().format(dateTime!);
     return Scaffold(
       appBar: header(context, titleText: "Tambah Data Tbc"),
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
@@ -269,13 +269,6 @@ class _AddTbcState extends State<AddTbc> {
                               const SnackBar(content: Text('Data Tbc Added')));
 
                           Navigator.pop(context, true);
-
-                          // Navigator.pushReplacement(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const HomeTbc(),
-                          //   ),
-                          // );
                         }
                       },
                       child: const Text("Simpan"),
@@ -291,6 +284,7 @@ class _AddTbcState extends State<AddTbc> {
   }
 }
 
+/// Validation function for the "Hari ke" field.
 String? validateHari(String? value) {
   if (value == null || value.isEmpty) {
     return "Tolong masukan Hari ke - ";
@@ -298,6 +292,7 @@ String? validateHari(String? value) {
   return null;
 }
 
+/// Validation function for the "Tanggal" field.
 String? validateTanggal(String? value) {
   if (value == null || value.isEmpty) {
     return "Tolong masukan tanggal ";
@@ -305,6 +300,7 @@ String? validateTanggal(String? value) {
   return null;
 }
 
+/// Validation function for the "Berat Badan" field.
 String? validateBb(String? value) {
   if (value == null || value.isEmpty) {
     return "Tolong masukan berat badan anda ";
@@ -312,6 +308,7 @@ String? validateBb(String? value) {
   return null;
 }
 
+/// Validation function for the "Keluhan" field.
 String? validateKeluhan(String? value) {
   if (value == null || value.isEmpty) {
     return "Tolong masukan keluhan anda ";
@@ -319,6 +316,7 @@ String? validateKeluhan(String? value) {
   return null;
 }
 
+/// Validation function for the "Tindakan" field.
 String? validateTindakan(String? value) {
   if (value == null || value.isEmpty) {
     return "Tolong masukan tindakan";

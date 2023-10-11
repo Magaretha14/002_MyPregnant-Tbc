@@ -5,6 +5,7 @@ import 'package:mypregnant/controller/pregnant_controller.dart';
 import 'package:mypregnant/model/pregnant_model.dart';
 import 'package:mypregnant/view/pregnant/home_pregnant.dart';
 
+/// A widget for adding a new pregnant record.
 class AddPregnant extends StatefulWidget {
   const AddPregnant({super.key});
 
@@ -33,6 +34,7 @@ class _AddPregnantState extends State<AddPregnant> {
 
   List<String> ket = ['Ya', 'Tidak'];
 
+  /// Generate dropdown items for a given list of strings.
   List<DropdownMenuItem> generateItems(List<String> ket) {
     List<DropdownMenuItem> items = [];
     for (var item in ket) {
@@ -317,13 +319,6 @@ class _AddPregnantState extends State<AddPregnant> {
                                   content: Text('Data Ibu Hamil ditambahkan')));
 
                           Navigator.pop(context, true);
-
-                          // Navigator.pushReplacement(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const HomePregnant(),
-                          //   ),
-                          // );
                         }
                       },
                       child: const Text("Simpan"),
@@ -339,6 +334,7 @@ class _AddPregnantState extends State<AddPregnant> {
   }
 }
 
+/// Validate input for Umur Kehamilan.
 String? validateUmurHamil(String? value) {
   if (value == null || value.isEmpty) {
     return "Tolong masukan umur kehamilan anda";
@@ -346,6 +342,7 @@ String? validateUmurHamil(String? value) {
   return null;
 }
 
+/// Validate input for Tanggal.
 String? validateTanggal(String? value) {
   if (value == null || value.isEmpty) {
     return "Tolong masukan tanggal";
@@ -353,6 +350,7 @@ String? validateTanggal(String? value) {
   return null;
 }
 
+/// Validate input for Berat Badan.
 String? validateBb(String? value) {
   if (value == null || value.isEmpty) {
     return "Tolong masukan Berat Badan";
@@ -360,6 +358,7 @@ String? validateBb(String? value) {
   return null;
 }
 
+/// Validate input for Keluhan.
 String? validateKeluhan(String? value) {
   if (value == null || value.isEmpty) {
     return "Tolong masukan Keluhan";
@@ -367,6 +366,7 @@ String? validateKeluhan(String? value) {
   return null;
 }
 
+/// Validate input for Tindakan.
 String? validateTindakan(String? value) {
   if (value == null || value.isEmpty) {
     return "Tolong masukan Tindakan";

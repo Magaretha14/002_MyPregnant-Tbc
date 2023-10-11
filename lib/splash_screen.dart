@@ -12,9 +12,10 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // TODO: implement initState
+    /// TODO: implement initState
     super.initState();
 
+    /// Delay selama 4 detik sebelum pindah ke halaman LoginPage.
     Future.delayed(const Duration(seconds: 4)).then((value) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
@@ -24,6 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
+  ///Menampilkan logo splash screen
   @override
   Widget build(BuildContext context) {
     return Scaffold(

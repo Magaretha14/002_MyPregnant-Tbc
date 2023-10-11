@@ -9,12 +9,26 @@ class DetailIbuHamil extends StatefulWidget {
   const DetailIbuHamil({
     Key? key,
     this.pregid,
+
+    /// ID ibu hamil
     this.usiajanin,
+
+    /// Usia kehamilan
     this.formatDate,
+
+    /// Format tanggal
     this.bbpreg,
+
+    /// Berat badan ibu hamil
     this.selectedvalue,
+
+    /// Nilai terpilih (kaki bengkak)
     this.keluhan,
+
+    /// Keluhan
     this.tindakan,
+
+    /// Tindakan yang diambil
   }) : super(key: key);
 
   final String? pregid;
@@ -39,13 +53,19 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
     // TODO: implement initState
     super.initState();
     pregController.getPreg();
+
+    /// Mengambil data ibu hamil
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: headerdetail(context, titleText: 'Detail Data Ibu Hamil'),
+
+      /// Tampilan app bar kustom
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+
+      /// Set warna latar belakang
       body: SafeArea(
         child: Form(
           key: _formKey,
@@ -57,6 +77,8 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                   alignment: Alignment.centerLeft,
                   child: const Text(
                     'Umur Kehamilan :',
+
+                    /// Label usia kehamilan
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -68,6 +90,8 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.calendar_view_day_rounded),
+
+                    /// Ikon kalender untuk input
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -75,17 +99,22 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  // onChanged: (value) {
-                  //   usiajanin = value;
-                  // },
                   initialValue: widget.usiajanin,
+
+                  /// Nilai awal dari properti widget
                   readOnly: true,
+
+                  /// Input hanya bisa dibaca
                 ),
                 const SizedBox(height: 10),
+
+                /// Spasi
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
                     'Tanggal :',
+
+                    /// Label tanggal
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -97,6 +126,8 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.event),
+
+                    /// Ikon event untuk input
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -105,13 +136,21 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                     ),
                   ),
                   initialValue: widget.formatDate,
+
+                  /// Nilai awal dari properti widget
                   readOnly: true,
+
+                  /// Input hanya bisa dibaca
                 ),
                 const SizedBox(height: 10),
+
+                /// Spasi
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
                     'Berat badan :',
+
+                    /// Label berat badan
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -123,6 +162,8 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.boy_rounded),
+
+                    /// Ikon anak laki-laki untuk input
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -130,17 +171,22 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  // onChanged: (value) {
-                  //   bbpreg = value;
-                  // },
                   initialValue: widget.bbpreg,
+
+                  /// Nilai awal dari properti widget
                   readOnly: true,
+
+                  /// Input hanya bisa dibaca
                 ),
                 const SizedBox(height: 10),
+
+                /// Spasi
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
                     'Kaki bengkak :',
+
+                    /// Label kaki bengkak
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -152,6 +198,8 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.airline_seat_legroom_extra),
+
+                    /// Ikon kursi pesawat untuk input
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -160,13 +208,21 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                     ),
                   ),
                   initialValue: widget.selectedvalue,
+
+                  /// Nilai awal dari properti widget
                   readOnly: true,
+
+                  /// Input hanya bisa dibaca
                 ),
                 const SizedBox(height: 10),
+
+                /// Spasi
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
                     'Keluhan :',
+
+                    /// Label keluhan
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -178,6 +234,8 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.sick),
+
+                    /// Ikon sakit untuk input
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -185,17 +243,22 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  // onChanged: (value) {
-                  //   keluhan = value;
-                  // },
                   initialValue: widget.keluhan,
+
+                  /// Nilai awal dari properti widget
                   readOnly: true,
+
+                  /// Input hanya bisa dibaca
                 ),
                 const SizedBox(height: 10),
+
+                /// Spasi
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
                     'Tindakan :',
+
+                    /// Label tindakan
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -207,6 +270,8 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.local_hospital_rounded),
+
+                    /// Ikon rumah sakit untuk input
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -214,13 +279,16 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  // onChanged: (value) {
-                  //   tindakan = value;
-                  // },
                   initialValue: widget.tindakan,
+
+                  /// Nilai awal dari properti widget
                   readOnly: true,
+
+                  /// Input hanya bisa dibaca
                 ),
                 const SizedBox(height: 30),
+
+                /// Spasi
                 Column(
                   children: [
                     ElevatedButton(
@@ -252,6 +320,8 @@ class _DetailIbuHamilState extends State<DetailIbuHamil> {
                         });
                       },
                       child: const Text("Edit"),
+
+                      /// Tombol Edit
                     ),
                   ],
                 ),
